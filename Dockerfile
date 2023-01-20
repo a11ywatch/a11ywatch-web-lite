@@ -7,6 +7,11 @@ RUN yarn config set network-timeout 300000 && yarn install --frozen-lockfile
 FROM node:alpine AS builder
 WORKDIR /app
 
+ARG WEB_SOCKET_URL
+ARG API
+
+ENV API=${API:-http://localhost:3280/graphql}
+ENV WEB_SOCKET_URL=${WEB_SOCKET_URL:-ws://localhost:3280/graphql}
 ENV NEXT_PUBLIC_DISABLE_SEO 1
 ENV DOCKER_CONTAINER 1
 ENV NODE_ENV production
@@ -35,9 +40,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 EXPOSE 3000
 
 ENV PORT 3000
-
-ARG WEB_SOCKET_URL
-ARG API
 
 ENV API=${API:-http://localhost:3280/graphql}
 ENV WEB_SOCKET_URL=${WEB_SOCKET_URL:-ws://localhost:3280/graphql}
