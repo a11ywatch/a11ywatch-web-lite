@@ -1,42 +1,39 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrBladesVertical } from 'react-icons/gr'
+import { GrCluster } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { classNames } from '@app/utils/classes'
 import { checkBoxStyle } from '@app/styles/checkbox'
 import { FormControl } from '../../form-control'
 
-export const SubDomainsBoxWrapper = ({
-  subdomains,
+export const SitemapBoxWrapper = ({
+  sitemap,
   url,
   activeSubscription,
 }: {
-  subdomains?: boolean
+  sitemap?: boolean
   url?: string
   activeSubscription?: boolean
 }) => {
+  const [sitemapEnabled, setTLD] = useState<boolean>(!!sitemap)
   const { updateWebsite } = useWebsiteContext()
-  const [subdomainsEneabled, setTLD] = useState<boolean>(!!subdomains)
 
   const onChangeEvent = async () => {
-    let nextValue = !subdomainsEneabled
+    let nextValue = !sitemapEnabled
     setTLD(nextValue)
     try {
       await updateWebsite({
-        variables: { url, subdomains: nextValue },
+        variables: { url, sitemap: nextValue },
       })
     } catch (e) {
       console.error(e)
     }
   }
 
-  const labelId = `${url}-subdomains-form`
+  const labelId = `${url}-sitemap-form`
 
   return (
-    <InfoBlock
-      title={'Subdomains'}
-      icon={<GrBladesVertical className='grIcon' />}
-    >
+    <InfoBlock title={'Sitemap'} icon={<GrCluster className='grIcon' />}>
       <div className='flex space-x-1 place-items-center'>
         <FormControl
           htmlFor={labelId}
@@ -44,25 +41,25 @@ export const SubDomainsBoxWrapper = ({
           disabled={!activeSubscription}
           className='text-sm font-medium'
         >
-          Subdomains
+          Sitemap
         </FormControl>
 
         <input
-          checked={subdomainsEneabled}
+          checked={sitemapEnabled}
           type='checkbox'
           id={labelId}
           disabled={!activeSubscription}
           onChange={onChangeEvent}
-          name={'subdomains'}
+          name={'sitemap'}
           className={classNames(
             checkBoxStyle,
             activeSubscription ? '' : 'text-gray-200'
           )}
         ></input>
       </div>
-      <div>{subdomainsEneabled ? 'Enabled' : 'Disabled'}</div>
+      <div>{sitemapEnabled ? 'Enabled' : 'Disabled'}</div>
     </InfoBlock>
   )
 }
 
-export const SubDomainsBox = memo(SubDomainsBoxWrapper)
+export const SitemapBox = memo(SitemapBoxWrapper)

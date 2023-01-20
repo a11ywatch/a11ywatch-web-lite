@@ -18,6 +18,7 @@ const list: ListLog[] = [
       'Selecting multiple runners supported.',
       'Proxy connect support.',
       'Performance improvements reaching 200k audits per minute!',
+      'Sitmap extended crawling!'
     ],
   },
   {

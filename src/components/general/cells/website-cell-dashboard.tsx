@@ -13,6 +13,7 @@ import {
   StandardBox,
   IssuesBox,
   WarningsBox,
+  SitemapBox,
   // OnlineBox,
 } from './blocks'
 import { MobileBox } from './blocks/mobile'
@@ -121,6 +122,7 @@ export function WebsiteCellDashboard({
   verified,
   runners,
   proxy,
+  sitemap,
 }: Website & WebsiteCellProps) {
   const { account } = useAuthContext() // TODO: move to provider top level
   const { feed } = useWasmContext()
@@ -316,24 +318,27 @@ export function WebsiteCellDashboard({
           <LighthouseBox pageInsights={pageInsights} />
           <ActionsBox actions={actionsEnabled && actions?.length} />
           <RunnersBox url={url} runners={runners} />
-          {account.activeSubscription ? (
-            <ProxyBox
+          <ProxyBox
               proxy={proxy}
               url={url}
               activeSubscription={account.activeSubscription}
             />
-          ) : null}
           <UserAgentBox ua={ua} url={url} />
           <StandardBox standard={standard} url={url} />
           <RobotsBox robots={robots} url={url} />
           <MobileBox mobile={mobile} url={url} />
-          <TLDBox
-            tld={tld}
+          <SubDomainsBox
+            subdomains={subdomains}
             url={url}
             activeSubscription={account.activeSubscription}
           />
-          <SubDomainsBox
-            subdomains={subdomains}
+          <SitemapBox
+            sitemap={sitemap}
+            url={url}
+            activeSubscription={account.activeSubscription}
+          />
+          <TLDBox
+            tld={tld}
             url={url}
             activeSubscription={account.activeSubscription}
           />

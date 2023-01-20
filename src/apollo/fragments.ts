@@ -106,6 +106,7 @@ export const websiteFragments = gql`
     rules
     runners
     proxy
+    sitemap
   }
 `
 

@@ -56,6 +56,8 @@ export function FormDialogWrapper({
   buttonStyles = '',
   icon,
 }: FormDialogProps) {
+  const { account } = useAuthContext()
+  const activeSubscription = account?.activeSubscription || SUPER_MODE
   // custom state
   const [open, setOpen] = useState<boolean>(false)
   const [websitUrl, setUrl] = useState<string>('')
@@ -63,6 +65,7 @@ export function FormDialogWrapper({
   const [pageInsights, setPageInsights] = useState<boolean>(false)
   const [mobileViewport, setMobile] = useState<boolean>(false)
   const [subdomains, setSubdomains] = useState<boolean>(false)
+  const [sitemap, setSitemap] = useState<boolean>(!!activeSubscription)
   const [tld, setTld] = useState<boolean>(false)
   const [ua, setUserAgent] = useState<string>('')
   const [proxy, setProxy] = useState<string>('')
@@ -72,11 +75,8 @@ export function FormDialogWrapper({
   const [robots, setRobots] = useState<boolean>(true)
   const [runners, setRunners] = useState<string[]>([])
 
-  const { account } = useAuthContext()
   const headers = useInputHeader()
   const actions = useInputActions()
-
-  const activeSubscription = account?.activeSubscription || SUPER_MODE
 
   const { addWebsite } = useWebsiteContext()
 
@@ -193,6 +193,7 @@ export function FormDialogWrapper({
         tld,
         runners,
         proxy,
+        sitemap,
       }
 
       // CLOSE pre-optimistic prevent dialog unmount state error
@@ -238,6 +239,7 @@ export function FormDialogWrapper({
       tld,
       runners,
       proxy,
+      sitemap,
     ]
   )
 
@@ -279,6 +281,9 @@ export function FormDialogWrapper({
 
   const onChangeTldEvent = () => {
     setTld((a: boolean) => !a)
+  }
+  const onChangeSitemapEvent = () => {
+    setSitemap((a: boolean) => !a)
   }
 
   return (
@@ -406,6 +411,21 @@ export function FormDialogWrapper({
                     disabled={!activeSubscription}
                   >
                     TLDs
+                  </FormControl>
+                </div>
+                <div className={checkBoxContainerStyles}>
+                  <Checkbox
+                    checked={sitemap}
+                    onChange={onChangeSitemapEvent}
+                    id={'sitemap'}
+                    disabled={!activeSubscription}
+                  />
+                  <FormControl
+                    htmlFor='sitemap'
+                    visible
+                    disabled={!activeSubscription}
+                  >
+                    Sitemap
                   </FormControl>
                 </div>
                 <RunnerSelect cb={onRunnerEvent} />

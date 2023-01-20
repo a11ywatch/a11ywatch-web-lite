@@ -81,9 +81,5 @@ const MFab = observer(({ iframeStore, issue, marketing }: any) => {
 // </Button>
 
 export const Fab = ({ issue, marketing }: any) => (
-  <MFab
-    iframeStore={IframeManager}
-    issue={issue}
-    marketing={marketing}
-  />
+  <MFab iframeStore={IframeManager} issue={issue} marketing={marketing} />
 )

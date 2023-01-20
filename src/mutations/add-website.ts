@@ -18,6 +18,7 @@ export const ADD_WEBSITE = gql`
     $rules: [String]
     $runners: [String]
     $proxy: String
+    $sitemap: Boolean
   ) {
     addWebsite(
       url: $url
@@ -34,6 +35,7 @@ export const ADD_WEBSITE = gql`
       rules: $rules
       runners: $runners
       proxy: $proxy
+      sitemap: $sitemap
     ) {
       website {
         ...WebsiteParts

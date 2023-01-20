@@ -479,6 +479,7 @@ export type Website = {
   rules?: string[]
   ignore?: string[]
   proxy?: string // proxy for request
+  sitemap?: boolean
 }
 
 export type WebsiteIssuesArgs = {
