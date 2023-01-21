@@ -319,10 +319,10 @@ export function WebsiteCellDashboard({
           <ActionsBox actions={actionsEnabled && actions?.length} />
           <RunnersBox url={url} runners={runners} />
           <ProxyBox
-              proxy={proxy}
-              url={url}
-              activeSubscription={account.activeSubscription}
-            />
+            proxy={proxy}
+            url={url}
+            activeSubscription={account.activeSubscription}
+          />
           <UserAgentBox ua={ua} url={url} />
           <StandardBox standard={standard} url={url} />
           <RobotsBox robots={robots} url={url} />

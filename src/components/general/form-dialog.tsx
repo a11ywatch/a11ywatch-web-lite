@@ -8,8 +8,11 @@ import { AppManager } from '@app/managers'
 import { InputHeaders } from './forms/input-headers'
 import { useInputActions, useInputHeader } from './hooks'
 import { useWebsiteContext } from '../providers/website'
-import { WCAGSelectInput } from './select'
-import { AccessibilityStandardKeys, Standard } from './select/select-input'
+import {
+  AccessibilityStandardKeys,
+  Standard,
+  WCAGSelectInput,
+} from './select/select-input'
 import { FormControl } from './form-control'
 import { HeadlessModal } from '../modal/headless'
 import { TextField } from './text-field'

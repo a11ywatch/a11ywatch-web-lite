@@ -1,4 +1,5 @@
 import { outlineStyles } from '@app/styles/buttons/outline'
+import { classNames } from '@app/utils/classes'
 import { PropsWithChildren } from 'react'
 
 type ButtonProps = PropsWithChildren<{
@@ -12,10 +13,6 @@ type ButtonProps = PropsWithChildren<{
   title?: string // button title hover
   round?: boolean // simple bump to border-radius
 }>
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export const Button: React.FC<ButtonProps> = ({
   children,
