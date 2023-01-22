@@ -232,6 +232,8 @@ export function WebsiteCellDashboard({
     } catch (e) {}
   }, [url, crawlWebsite])
 
+  const lhVisible = pageInsights && insight && lighthouseVisible
+
   return (
     <li>
       <div className={`${index ? 'border-t' : ''}`}>
@@ -350,7 +352,7 @@ export function WebsiteCellDashboard({
             hideBadge
           />
         </div>
-        {issuesInfo || liveData.length ? (
+        {account.activeSubscription && (issuesInfo || liveData.length) ? (
           <AnalyticsCard domain={domain} liveData={liveData} />
         ) : null}
         <div className='py-3'>
@@ -369,12 +371,11 @@ export function WebsiteCellDashboard({
             </div>
           ) : null}
         </div>
-        <div className='py-3'>
-          <LighthouseCard
-            lighthouseVisible={pageInsights && insight && lighthouseVisible}
-            insight={insight}
-          />
-        </div>
+        {lhVisible ? (
+          <div className='py-3'>
+            <LighthouseCard lighthouseVisible={lhVisible} insight={insight} />
+          </div>
+        ) : null}
       </div>
     </li>
   )

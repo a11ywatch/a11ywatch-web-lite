@@ -8,7 +8,7 @@ const PageNotFound = ({ name }: PageProps) => {
   return (
     <MarketingDrawer title={name} footerSpacing>
       <PageTitle>404</PageTitle>
-      <div className='space-y-2'>
+      <div className='space-y-2 px-2'>
         <GrHelp className='grIcon text-2xl' />
         <p className='text-lg'>Page not found.</p>
         <p>If the issue continues please try again later or contact support.</p>

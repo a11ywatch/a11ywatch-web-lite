@@ -31,8 +31,6 @@ const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
     !!AppManager.snackbar.open && !(topLevel && AppManager.modalActive)
       ? 'transition transform fixed z-100 bottom-0 inset-x-0 pb-2 sm:pb-5 scale-100 translate-y-0 ease-out duration-500 z-30'
       : 'hidden'
-
-  // custom id to use for accessibility
   const id = snackID ?? 'message-id'
 
   return (
@@ -41,36 +39,34 @@ const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
       className={snackStyle}
       aria-hidden={!AppManager.snackbar.open}
     >
-      <div className='max-w-screen-xl mx-auto px-2 sm:px-4'>
-        <div
-          className={`min-w-[50vw] overflow-hidden truncate ${
-            AppManager.snackbar.type === 'error' ? 'border border-red-500' : ''
-          } overflow-hidden truncate flex bg-white dark:bg-black rounded space-x-4 p-4 place-items-center place-content-between border shadow`}
-        >
-          <div className='flex flex-1 gap-x-1.5'>
-            <p
-              id={id}
-              className={`text-base max-w-[65vw] truncate ${
-                AppManager.snackbar.type === 'error' ? 'text-red-600' : ''
-              }`}
-            >
-              {AppManager.snackbar.title}
-            </p>
-            {AppManager.snackbar.showBtn ? (
-              <Link className={'font-medium text-[#3b82f6]'} href='/payments'>
-                UPGRADE ACCOUNT
-              </Link>
-            ) : null}
-          </div>
-          <Button
-            aria-label='close'
-            onClick={handleClose}
-            className={'border-0 md:py-2'}
-            iconButton
+      <div
+        className={`min-w-[50vw] max-w-screen-xl mx-auto px-2 sm:px-4 overflow-hidden truncate ${
+          AppManager.snackbar.type === 'error' ? 'border border-red-500' : ''
+        } overflow-hidden truncate flex bg-white dark:bg-black rounded space-x-4 p-4 place-items-center place-content-between border shadow`}
+      >
+        <div className='flex flex-1 gap-x-1.5 place-items-center place-content-between'>
+          <p
+            id={id}
+            className={`text-base line-clamp-1 ${
+              AppManager.snackbar.type === 'error' ? 'text-red-600' : ''
+            }`}
           >
-            <GrClose className='grIcon text-sm' title='Close bar' />
-          </Button>
+            {AppManager.snackbar.title}
+          </p>
+          {AppManager.snackbar.showBtn ? (
+            <Link className={'font-medium text-[#3b82f6]'} href='/payments'>
+              UPGRADE ACCOUNT
+            </Link>
+          ) : null}
         </div>
+        <Button
+          aria-label='close'
+          onClick={handleClose}
+          className={'border-0 md:py-2'}
+          iconButton
+        >
+          <GrClose className='grIcon text-sm' title='Close bar' />
+        </Button>
       </div>
     </div>
   )

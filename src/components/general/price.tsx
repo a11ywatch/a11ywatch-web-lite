@@ -147,7 +147,7 @@ export function PaymentPlans({
       <div className='flex flex-1 gap-3 flex-wrap-reverse md:flex-wrap'>
         <ul
           id='plans-section'
-          className={`w-full md:w-auto grid nowrap md:flex-wrap xl:grid-cols-2 gap-2 list-none`}
+          className={`w-full md:w-auto grid nowrap md:flex-wrap gap-2 list-none`}
         >
           {plans.map((planProps, index) => {
             const title = planProps.title

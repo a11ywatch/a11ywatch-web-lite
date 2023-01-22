@@ -1,4 +1,4 @@
-import { GrFormCheckmark } from 'react-icons/gr'
+import { GrCheckbox, GrCheckboxSelected } from 'react-icons/gr'
 
 const highLight = (highLightStyles: any, selected: boolean, d: string = '') =>
   selected ? highLightStyles : d
@@ -6,19 +6,12 @@ const highLight = (highLightStyles: any, selected: boolean, d: string = '') =>
 const SubHeading = ({ children, pricingPage, ...extra }: any) =>
   pricingPage ? <h3 {...extra}>{children}</h3> : <h4 {...extra}> {children}</h4>
 
-// feature with plan
-const Description = ({ children, pricingPage, ...extra }: any) =>
-  pricingPage ? <h4 {...extra}>{children}</h4> : <h5 {...extra}>{children}</h5>
-
 export function PriceCell({
   selected,
   onClick,
-  details,
   pricingPage,
   textColor,
-  title,
   yearly,
-  subTitle,
   costYearly,
   cost,
   selectHighPlans,
@@ -29,7 +22,7 @@ export function PriceCell({
 
   return (
     <button
-      className={`md:min-w-[386.53px] w-full h-full rounded flex flex-1 flex-col justify-between border border-[#2A2A2A] ${highLight(
+      className={`md:min-w-[450px] lg:min-w-[550px] w-full h-full rounded flex flex-1 flex-col justify-between border border-[#2A2A2A] ${highLight(
         'border-blue-600',
         selected,
         ''
@@ -44,7 +37,7 @@ export function PriceCell({
       <>
         <div className='w-full'>
           <div
-            className={`text-left w-full flex-col text-white px-8 py-4 ${highLight(
+            className={`text-left w-full flex-col text-white px-4 py-4 ${highLight(
               'bg-blue-700 text-white',
               selected,
               selectHighPlans ? 'bg-gradient-radial' : `bg-[${textColor}]`
@@ -58,52 +51,36 @@ export function PriceCell({
               )}`}
               pricingPage={pricingPage}
             >
-              <span className='text-xl'>
-                {title}
-                {activePlan ? (
-                  <span className='text-sm'>{' Active Plan'}</span>
-                ) : null}
-              </span>
-              {cost ? (
-                <span className={'text-base block font-light'}>
-                  {yearly ? costYearly : cost} |{' '}
-                  <span
-                    className={`text-sm ${
-                      selectHighPlans && !selected ? '' : 'text-gray-100'
-                    }`}
-                  >
-                    up to {pageCountFormatted} daily analyzations
+              <span
+                className={
+                  'text-base font-light flex place-items-center place-content-between gap-x-4'
+                }
+              >
+                <span className='block'>
+                  {activePlan ? (
+                    <span className='text-xs'>{'Active Plan'}</span>
+                  ) : null}
+                  <span className={'flex gap-x-4 place-items-center'}>
+                    <span className='text-xl md:text-2xl font-semibold w-[135px]'>
+                      {yearly ? costYearly : cost}
+                    </span>
+                    <span
+                      className={`text-sm ${
+                        selectHighPlans && !selected ? '' : 'text-gray-100'
+                      }`}
+                    >
+                      up to {pageCountFormatted} monthly analyzations
+                    </span>
                   </span>
                 </span>
-              ) : null}
+                {selected ? (
+                  <GrCheckboxSelected className='grIcon text-lg' />
+                ) : (
+                  <GrCheckbox className='grIcon text-lg' />
+                )}
+              </span>
             </SubHeading>
-            {subTitle ? (
-              <div className='max-w-[350px] xl:max-w-[380px]'>
-                <p className='text-lg max-w-[325px]'>{subTitle}</p>
-              </div>
-            ) : null}
           </div>
-          <ul className='px-4 space-y-1 py-2'>
-            {details?.map((item: string, i: number) => (
-              <li
-                className={'flex gap-x-3 place-items-center text-left'}
-                key={`${item}-${i}`}
-                aria-hidden={!item}
-              >
-                <div
-                  className='rounded-xl text-white stroke-white'
-                  style={{
-                    backgroundColor: textColor,
-                  }}
-                >
-                  <GrFormCheckmark className='grIcon' />
-                </div>
-                <Description className='text-base' pricingPage={pricingPage}>
-                  {item}
-                </Description>
-              </li>
-            ))}
-          </ul>
         </div>
       </>
     </button>
