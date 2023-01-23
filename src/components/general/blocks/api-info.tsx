@@ -47,8 +47,7 @@ export const APIInfoBlock = ({
             ).toFixed(0)}s`}
           </p>
           <p className={'text-xs '}>
-            Your limit will reset on your next API request if {`it's`} the next
-            day.
+            Your limit resets monthly.
           </p>
         </>
       )}

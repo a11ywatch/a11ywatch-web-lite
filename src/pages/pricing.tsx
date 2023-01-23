@@ -11,12 +11,12 @@ function Pricing({ name }: PageProps) {
     <MarketingDrawer title={name}>
       <SectionContainer container block>
         <Header>Maintainable and easy pricing</Header>
-        <h2 className={'text-base pb-2 '}>
+        <h2 className={'text-base pb-2'}>
           Plans are usage based that can be adjusted at anytime and includes a{' '}
           {trialDuration} free trial.
         </h2>
 
-        <p className=''>
+        <p>
           Get detailed accessibility reports that go beyond the basics across
           all your websites. Our pricing is drastically more affordable than any
           other web accessibility SaaS.

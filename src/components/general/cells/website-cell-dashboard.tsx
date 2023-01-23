@@ -358,10 +358,10 @@ export function WebsiteCellDashboard({
         <div className='py-3'>
           {issuesInfo || liveData.length ? (
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 px-2'>
-              <div className='border rounded-sm'>
+              <div className='border rounded-sm overflow-hidden'>
                 <IssueCard pageUrl={url} liveData={liveData} />
               </div>
-              <div className='border rounded-sm'>
+              <div className='border rounded-sm overflow-hidden'>
                 <PageCard
                   pageUrl={url}
                   liveData={liveData}
