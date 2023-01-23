@@ -10,10 +10,10 @@ const defaultSnackBar = {
 
 // determine if account needs upgrade
 export const upgradeRequired = (text: string) =>
+  text === 'RATE EXCEEDED: Please try again later or upgrade your account.' ||
   text.includes('max websites added') ||
   text.includes('upgrade your account') ||
-  text.includes('you hit your scan limit for the day') ||
-  text === 'RATE EXCEEDED: Please try again later or upgrade your account.'
+  text.includes('you hit your scan limit for the day')
 
 class AppManager {
   @observable
