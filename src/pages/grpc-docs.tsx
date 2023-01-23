@@ -261,24 +261,6 @@ function GrpcDocs({ name }: PageProps) {
                 </li>
 
                 <li>
-                  <a href='#Script'>
-                    <span className='badge'>M</span>Script
-                  </a>
-                </li>
-
-                <li>
-                  <a href='#ScriptMeta'>
-                    <span className='badge'>M</span>ScriptMeta
-                  </a>
-                </li>
-
-                <li>
-                  <a href='#ScriptParams'>
-                    <span className='badge'>M</span>ScriptParams
-                  </a>
-                </li>
-
-                <li>
                   <a href='#Web'>
                     <span className='badge'>M</span>Web
                   </a>
@@ -1456,19 +1438,6 @@ function GrpcDocs({ name }: PageProps) {
                 </td>
                 <td>
                   <a href='#Web'>.Web</a>
-                </td>
-                <td>
-                  <p></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td>SetScript</td>
-                <td>
-                  <a href='#ScriptParams'>.ScriptParams</a>
-                </td>
-                <td>
-                  <a href='#Script'>.Script</a>
                 </td>
                 <td>
                   <p></p>

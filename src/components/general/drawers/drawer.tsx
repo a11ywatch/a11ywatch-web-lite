@@ -77,7 +77,7 @@ export function DrawerW({ children, route, title }: any) {
     <>
       <DrawerHead />
       <div className={'flex overflow-x-inherit md:overflow-x-hidden'}>
-        <DrawerWrapper route={route} title={title} loading={loading} />
+        {user?.role ? <DrawerWrapper route={route} title={title} loading={loading} /> : null}
         <main className={'flex-1 overflow-auto'} id='main-content'>
           <div
             className={

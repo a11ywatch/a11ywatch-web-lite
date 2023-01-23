@@ -40,19 +40,19 @@ const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
       aria-hidden={!AppManager.snackbar.open}
     >
       <div
-        className={`min-w-[50vw] max-w-screen-xl mx-auto px-2 sm:px-4 overflow-hidden truncate ${
-          AppManager.snackbar.type === 'error' ? 'border border-red-500' : ''
-        } overflow-hidden truncate flex bg-white dark:bg-black rounded space-x-4 p-4 place-items-center place-content-between border shadow`}
+        className={`min-w-[50vw] max-w-screen-xl mx-auto px-2 sm:px-4 overflow-hidden ${
+          AppManager.snackbar.type === 'error' ? 'border-red-500' : ''
+        } flex bg-white dark:bg-black rounded space-x-4 p-4 place-items-center place-content-between border shadow`}
       >
-        <div className='flex flex-1 gap-x-1.5 place-items-center place-content-between'>
-          <p
+        <div className='flex gap-x-1.5 place-items-center place-content-between'>
+          <div
             id={id}
-            className={`text-base line-clamp-1 ${
+            className={`text-base line-clamp-2 ${
               AppManager.snackbar.type === 'error' ? 'text-red-600' : ''
             }`}
           >
             {AppManager.snackbar.title}
-          </p>
+          </div>
           {AppManager.snackbar.showBtn ? (
             <Link className={'font-medium text-[#3b82f6]'} href='/payments'>
               UPGRADE ACCOUNT

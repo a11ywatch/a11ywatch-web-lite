@@ -46,9 +46,7 @@ export const APIInfoBlock = ({
               : 0
             ).toFixed(0)}s`}
           </p>
-          <p className={'text-xs '}>
-            Your limit resets monthly.
-          </p>
+          <p className={'text-xs '}>Your limit resets monthly.</p>
         </>
       )}
     </Box>

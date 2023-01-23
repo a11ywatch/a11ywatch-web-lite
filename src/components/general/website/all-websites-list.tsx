@@ -5,6 +5,9 @@ import { Popover } from '@headlessui/react'
 import { useInteractiveContext } from '@app/components/providers/interactive'
 import { HomeManager } from '@app/managers'
 
+const cellClassName =
+  'w-full text-left text-sm px-2 py-1.5 md:px-4 md:py-1.5 hover:opacity-70 hover:rounded-t'
+
 const WebsiteCellItem = ({
   domain,
   onClick,
@@ -25,16 +28,14 @@ const WebsiteCellItem = ({
 }
 
 export const AllWebsitesList: FC = () => {
-  const { data, loading } = useQuery(GET_WEBSITES_LIST, {
+  const { data, loading, error } = useQuery(GET_WEBSITES_LIST, {
     variables: { limit: 100 },
     fetchPolicy: 'cache-and-network',
     ssr: false,
   })
   const { setSelectedWebsite } = useInteractiveContext()
 
-  const list = useMemo(() => {
-    return data?.user?.websites || []
-  }, [data])
+  const list = useMemo(() => data?.user?.websites || [], [data])
 
   const onClickEvent = (domain: string) => {
     HomeManager.setDashboardView(domain)
@@ -48,12 +49,7 @@ export const AllWebsitesList: FC = () => {
   return (
     <ul className='max-h-64 overflow-y-auto list-none bg-white dark:bg-black shadow rounded border scrollbar'>
       <li>
-        <Popover.Button
-          onClick={onViewAllEvent}
-          className={
-            'w-full text-left text-sm px-2 py-1.5 md:px-4 md:py-1.5 hover:opacity-70 hover:rounded-t'
-          }
-        >
+        <Popover.Button onClick={onViewAllEvent} className={cellClassName}>
           View all sites
         </Popover.Button>
       </li>
@@ -65,9 +61,11 @@ export const AllWebsitesList: FC = () => {
             onClick={() => onClickEvent(item.url)}
           />
         ))
-      ) : (
-        <li>{loading ? 'Loading Websites...' : 'An Issue occurred.'}</li>
-      )}
+      ) : loading || error ? (
+        <li className={cellClassName}>
+          {loading ? 'Loading Websites...' : 'An Issue occurred.'}
+        </li>
+      ) : null}
     </ul>
   )
 }
