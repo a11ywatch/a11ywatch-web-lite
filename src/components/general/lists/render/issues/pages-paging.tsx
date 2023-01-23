@@ -53,6 +53,7 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
       setIndex((x: number) => x - 1)
     }
   }
+
   const idx = (issueIndex + 1) * 10
   const blocked = issueSource.length < idx
 
@@ -69,7 +70,7 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
       <div className='flex flex-col place-content-around'>
         <div className='h-[450px]'>
           <InnerWrapper data={issueSource.length} loading={loading}>
-            <ul className='list-none'>
+            <ul className='list-none pr-4'>
               {issueList.map((page) => (
                 <PagesList
                   key={page?._id ?? page.url ?? page.pageUrl}

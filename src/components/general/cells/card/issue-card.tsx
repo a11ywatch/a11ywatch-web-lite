@@ -8,7 +8,7 @@ const PageBar = () => {
     <div className='flex px-4 py-2 flex-1 w-full place-items-center text-xs md:text-sm'>
       <div className='text-left'>Urls</div>
       <div className='flex flex-1 w-full place-content-end text-right'>
-        <div className='grid grid grid-cols-2 gap-4'>
+        <div className='grid grid grid-cols-2 gap-5 md:gap-[1rem]'>
           <div>Warnings</div>
           <div>Errors</div>
         </div>
