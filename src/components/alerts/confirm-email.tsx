@@ -29,7 +29,7 @@ function ConfirmEmail({ sendEmail, visible }: Props) {
             .join(' ')
             .trim()}
         >
-          Please confirm your email to enable alerts
+          Please confirm your email to get started.
         </p>
         <button
           onClick={sendEmail}

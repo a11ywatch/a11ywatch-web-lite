@@ -2,7 +2,6 @@ import { FC, memo, PropsWithChildren } from 'react'
 import dynamic from 'next/dynamic'
 import { useUserData } from '@app/data'
 import { ConfirmEmail } from '../../alerts'
-import { RefBanner } from '../ref-banner'
 import { DrawerHead } from './drawer-head'
 import { IssueFeed } from '@app/components/feed'
 
@@ -33,7 +32,6 @@ export const DrawerW: FC<PropsWithChildren<{}>> = ({ children }) => {
           <div
             className={'px-3 md:px-4 pb-28 md:pb-16 overflow-auto max-h-screen'}
           >
-            <RefBanner />
             {children}
           </div>
           <ConfirmEmail

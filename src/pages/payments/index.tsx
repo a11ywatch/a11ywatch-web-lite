@@ -20,11 +20,6 @@ interface PaymentProps extends PageProps {
   hideTitle?: boolean
 }
 
-declare global {
-  var rewardful: any
-  var Rewardful: { referral: string; rewardful(a: string): void }
-}
-
 // determine the page title
 const renderPaymentTitle = (renderPayMentBoxes?: boolean) => {
   return renderPayMentBoxes
@@ -39,7 +34,6 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
   const [selectedPlan, setState] = useState<string>('')
   const [newCard, setNewCard] = useState<boolean>(false)
   const [yearly, setYearly] = useState<boolean>(false)
-  const [referral, setReferral] = useState<string>('')
   const { account } = useAuthContext()
 
   // router plan query
@@ -64,16 +58,6 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
   const paymentPlan = selectedPlan || basePlan || 'L1'
 
   useEffect(() => {
-    if (window.rewardful) {
-      window.rewardful('ready', () => {
-        if (window.Rewardful.referral) {
-          setReferral(window.Rewardful.referral)
-        }
-      })
-    }
-  }, [setReferral])
-
-  useEffect(() => {
     if (yearSet) {
       setYearly(true)
     }
@@ -84,13 +68,13 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
 
   // on valid payment handling re-set current token
   const onTokenEvent = async (token: any) => {
-    await onToken(token, { plan: paymentPlan, yearly, referral })
+    await onToken(token, { plan: paymentPlan, yearly })
   }
 
   const handleChange = async (newState: string) => {
     if (!manualCheckout) {
       if (newState !== currentPlan) {
-        await onToken('', { plan: newState, yearly, referral }, true)
+        await onToken('', { plan: newState, yearly }, true)
         if (typeof refetch === 'function') {
           await refetch()
         }

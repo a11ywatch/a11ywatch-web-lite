@@ -8,7 +8,6 @@ import { FixedCopyRight } from '../fixed-copy-right'
 import { ConfirmEmail } from '../../alerts'
 import { IssueFeed } from '../../feed'
 import { SearchBar } from '../searchbar'
-import { RefBanner } from '../ref-banner'
 import { DrawerHead } from './drawer-head'
 
 const DynamicModal = dynamic(
@@ -86,7 +85,6 @@ export function DrawerW({ children, route, title }: any) {
               'px-3 pt-4 pb-20 scrollbar overflow-auto max-h-screen md:px-4 md:pb-0'
             }
           >
-            <RefBanner />
             {children}
           </div>
           <ConfirmEmail
