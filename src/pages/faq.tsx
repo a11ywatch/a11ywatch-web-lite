@@ -60,9 +60,9 @@ function Faq({ name }: PageProps) {
                 rel='noopener'
                 target='_blank'
                 className={'text-blue-700'}
-                href={'https://a11ywatch.getrewardful.com/signup'}
+                href={'https://a11ywatch.com'}
               >
-                referrals
+                links to a11ywatch.com
               </LinkPrefetch>
               .
             </p>
@@ -84,6 +84,25 @@ function Faq({ name }: PageProps) {
           >
             <p className='text-base' itemProp='text'>
               Yes, upgrade and downgrades take effect immediately.
+            </p>
+          </div>
+        </div>
+
+        <div
+          itemScope
+          itemProp='mainEntity'
+          itemType='https://schema.org/Question'
+        >
+          <Header2 itemProp='name'>Do you ever do sales or discounts?</Header2>
+          <div
+            itemScope
+            itemProp='acceptedAnswer'
+            itemType='https://schema.org/Answer'
+          >
+            <p className='text-base' itemProp='text'>
+              Negative. The price you are seeing today or are paying in your
+              account now is the best price period. {`We've`} never done any
+              discounts and planning to stay that way indefinitely.
             </p>
           </div>
         </div>
