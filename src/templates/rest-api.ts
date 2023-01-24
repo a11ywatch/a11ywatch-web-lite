@@ -47,6 +47,11 @@ const crawlParams = {
     desc: 'Include subdomains that match domain.',
     optional: true,
   },
+  sitemap: {
+    type: 'boolean',
+    desc: 'Extend crawl with sitemap links.',
+    optional: true,
+  },
   tld: {
     type: 'boolean',
     desc: 'Include all TLD extensions that match domain.',
@@ -200,7 +205,17 @@ export const apiRoutes = [
       {
         pathName: 'report?url=https://a11ywatch.com',
         method: 'GET',
-        params: null,
+        params: {
+          url: {
+            ...websiteParamDefs.url,
+            optional: true,
+          },
+          download: {
+            type: 'boolean',
+            desc: 'Download the report to excel.',
+            optional: true,
+          },
+        },
         encodedParams: '',
         info: 'Get the last report ran for a web page url.',
         title: 'Report',
@@ -247,12 +262,12 @@ export const apiRoutes = [
         params: {
           offset: {
             type: 'number',
-            desc: 'The page offset to grab the next set',
+            desc: 'The page offset to grab the next set.',
             optional: true,
           },
           domain: {
             type: 'string',
-            desc: 'The domain to get issues for',
+            desc: 'The domain to get issues for.',
             optional: true,
           },
         },
@@ -266,7 +281,7 @@ export const apiRoutes = [
         params: {
           offset: {
             type: 'number',
-            desc: 'The page offset to grab the next set',
+            desc: 'The page offset to grab the next set.',
             optional: true,
           },
           domain: {
@@ -285,17 +300,17 @@ export const apiRoutes = [
         params: {
           offset: {
             type: 'number',
-            desc: 'The page offset to grab the next set',
+            desc: 'The page offset to grab the next set.',
             optional: true,
           },
           domain: {
             type: 'string',
-            desc: 'The domain to get analytics for',
+            desc: 'The domain to get analytics for.',
             optional: true,
           },
           pageUrl: {
             type: 'string',
-            desc: 'The exact page url to get analytics for',
+            desc: 'The exact page url to get analytics for.',
             optional: true,
           },
         },
@@ -310,17 +325,17 @@ export const apiRoutes = [
         params: {
           offset: {
             type: 'number',
-            desc: 'The page offset to grab the next set',
+            desc: 'The page offset to grab the next set.',
             optional: true,
           },
           domain: {
             type: 'string',
-            desc: 'The domain to get analytics for',
+            desc: 'The domain to get analytics for.',
             optional: true,
           },
           pageUrl: {
             type: 'string',
-            desc: 'The exact page url to get analytics for',
+            desc: 'The exact page url to get analytics for.',
             optional: true,
           },
         },
