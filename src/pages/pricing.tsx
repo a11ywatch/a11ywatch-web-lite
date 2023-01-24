@@ -4,7 +4,6 @@ import type { PageProps } from '@app/types'
 import { Partners } from '@app/components/stateless/marketing/partners'
 import { SectionContainer } from '@app/components/stateless/containers/section-container'
 import { Header } from '@app/components/general/header'
-import { trialDuration } from '@app/configs/app-config'
 
 function Pricing({ name }: PageProps) {
   return (
@@ -12,8 +11,7 @@ function Pricing({ name }: PageProps) {
       <SectionContainer container block>
         <Header>Maintainable and easy pricing</Header>
         <h2 className={'text-base pb-2'}>
-          Plans are usage based that can be adjusted at anytime and includes a{' '}
-          {trialDuration} free trial.
+          Plans are usage based that can be adjusted up or down at anytime.
         </h2>
 
         <p>

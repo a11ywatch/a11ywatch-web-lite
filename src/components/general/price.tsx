@@ -40,7 +40,7 @@ function MainButton({
           className={`tracking-wide text-lg text-gray-50 bg-blue-700 border-4 border-blue-600 px-4 py-2 hover:ring hover:no-underline rounded-3xl text-center`}
           href={`/register?plan=${title}${yearly ? '&yearly=true' : ''}`}
         >
-          Get started with a free trial
+          Get started
         </Link>
       </div>
     )

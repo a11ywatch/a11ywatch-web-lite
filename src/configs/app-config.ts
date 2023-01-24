@@ -40,11 +40,6 @@ const STATUS_URL = AppConfig?.graphQLUrl?.replace('/graphql', '/status')
 
 export const REST_API = api.replace('/graphql', '')
 
-// free trial premium
-export const trialDuration = process.env.NEXT_PUBLIC_FREE_TRIAL
-  ? parseInt(process.env.NEXT_PUBLIC_FREE_TRIAL, 10)
-  : 14
-
 // USED FOR REPORTS ( TODO REVISIT URL )
 const BASE_GQL_URL = `${AppConfig?.graphQLUrl
   ?.replace('api.', '')
