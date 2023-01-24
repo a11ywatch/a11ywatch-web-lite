@@ -26,6 +26,7 @@ import { CancelSubscriptionModal } from '@app/components/general/cancel-model'
 import { usePaymentsHook } from '@app/data/external/payments/use-payments'
 import { TextField } from '@app/components/general/text-field'
 import { outlineStyles } from '@app/styles/buttons/outline'
+import { getUsageLimitsMs } from '@a11ywatch/website-source-builder'
 
 interface PasswordState {
   newPassword?: string
@@ -183,11 +184,16 @@ const Profile: FC<PageProps> = ({ name }) => {
     await onCancelConfirm()
   }
 
+  const maxUsage = getUsageLimitsMs(user?.role || 0)
+  const baseUsage = user?.scanInfo?.totalUptime
+    ? (Number(user.scanInfo.totalUptime) / maxUsage) * 100
+    : 0
+
   return (
     <Fragment>
       {user?.passwordRequired ? (
         <div className='text-center py-2'>
-          <p className='text-base '>
+          <p className='text-base'>
             Password reset required. Please change your password now
           </p>
         </div>
@@ -207,11 +213,13 @@ const Profile: FC<PageProps> = ({ name }) => {
               skeletonLoad={!user && loading}
               subTitle={roleMap(user?.role)}
             />
-            <ProfileCell
-              title={'Active Subscription'}
-              skeletonLoad={!user && loading}
-              subTitle={user?.activeSubscription ? 'Yes' : 'No'}
-            />
+            {user && user.role ? (
+              <ProfileCell
+                title={'Active Subscription'}
+                skeletonLoad={!user && loading}
+                subTitle={user?.activeSubscription ? 'Yes' : 'No'}
+              />
+            ) : null}
             <ProfileCell
               title={'Alerts Enabled'}
               skeletonLoad={!user && loading}
@@ -220,10 +228,7 @@ const Profile: FC<PageProps> = ({ name }) => {
             <ProfileCell
               title={'Uptime Used'}
               skeletonLoad={!user && loading}
-              subTitle={`${(user?.scanInfo?.totalUptime
-                ? Number(user.scanInfo.totalUptime) / 1000
-                : 0
-              ).toFixed(0)}s`}
+              subTitle={`${Math.min(baseUsage, 100).toFixed(0)}%`}
             />
             {user?.activeSubscription ? (
               <ProfileCell

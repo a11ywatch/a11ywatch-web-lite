@@ -32,6 +32,10 @@ const GET_USER_SETTINGS = gql`
       pageSpeedApiKey
       emailFilteredDates
       emailMorningOnly
+      scanInfo {
+        lastScanDate
+        totalUptime
+      }
     }
   }
 `

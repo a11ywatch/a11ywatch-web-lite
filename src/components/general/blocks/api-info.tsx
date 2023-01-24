@@ -15,7 +15,10 @@ export const APIInfoBlock = ({
   hideHeader?: boolean
 }) => {
   // todo: custom limits check from property
-  const availableUsage = getUsageLimitsMs(user?.role ?? 0)
+  const maxUsage = getUsageLimitsMs(user?.role ?? 0)
+  const baseUsage = user?.scanInfo?.totalUptime
+    ? (Number(user.scanInfo.totalUptime) / maxUsage) * 100
+    : 0
 
   return (
     <Box className={'border border-dotted rounded px-4 py-2'}>
@@ -33,20 +36,13 @@ export const APIInfoBlock = ({
         </p>
       ) : (
         <>
-          <p className='text-base '>
-            Allowed usage{' '}
-            {`${(availableUsage ? Number(availableUsage) / 1000 : 0).toFixed(
-              0
-            )}s`}
+          {/* <p className='text-base'>
+            Plan allows up to {}
+          </p> */}
+          <p className='text-sm'>
+            Usage used {`${Math.min(baseUsage, 100).toFixed(0)}%`}
           </p>
-          <p className='text-sm '>
-            Usage used{' '}
-            {`${(user?.scanInfo?.totalUptime
-              ? Number(user.scanInfo.totalUptime) / 1000
-              : 0
-            ).toFixed(0)}s`}
-          </p>
-          <p className={'text-xs '}>Your limit resets monthly.</p>
+          <p className={'text-xs'}>Your limit resets monthly.</p>
         </>
       )}
     </Box>

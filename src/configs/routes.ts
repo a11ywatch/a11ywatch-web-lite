@@ -51,12 +51,6 @@ export const Routes = [
   },
   {
     nav: false,
-    href: 'https://a11ywatch.getrewardful.com/signup',
-    name: 'Affiliates',
-    type: 'explore',
-  },
-  {
-    nav: false,
     href: '/privacy',
     name: 'Privacy Policy',
     type: 'legal',

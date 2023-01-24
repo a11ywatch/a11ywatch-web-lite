@@ -14,7 +14,8 @@ export function MarketingAlternatives() {
               Pick the best Wave alternative
             </Header3>
             <p className='text-sm md:text-xl font-medium'>
-              Start {companyName} now to get fast and affordable inclusion monitoring
+              Start {companyName} now to get fast and affordable inclusion
+              monitoring
             </p>
           </div>
           <div className='flex flex-1 md:place-content-end md:pr-40'>
