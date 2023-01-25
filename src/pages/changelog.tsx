@@ -15,10 +15,11 @@ const list: ListLog[] = [
   {
     date: 'January 2023',
     updates: [
+      'Performance improvements reaching 400k+ audits per minute!',
       'Selecting multiple runners supported.',
       'Proxy connect support.',
-      'Performance improvements reaching 200k audits per minute!',
       'Sitmap extended crawling!',
+      'Performance improvements reaching 200k audits per minute!',
     ],
   },
   {

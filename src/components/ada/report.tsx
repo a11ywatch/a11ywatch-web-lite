@@ -71,8 +71,8 @@ export function ReportView({
   const empty = !('domain' in website && 'url' in website)
 
   return (
-    <div className={`block sm:flex h-[100vh] overflow-hidden border-t`}>
-      <div className='border-r'>
+    <div className={`block sm:flex h-[100vh] overflow-hidden`}>
+      <div className='md:border-r'>
         <ReportViewLeft
           website={website}
           closeButton={closeButton}

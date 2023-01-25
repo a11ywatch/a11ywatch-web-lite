@@ -12,11 +12,11 @@ export const IntroGraph: FC = () => {
           <li className='flex flex-1 px-2 h-full'>
             <div className='flex flex-col h-full place-content-end'>
               <div className='py-1' aria-hidden='true'>
-                <div className='text-base font-semibold'>208,633</div>
+                <div className='text-base font-semibold'>403,210+</div>
               </div>
               <div className='px-2 bg-black dark:bg-white h-full w-20 rounded-t border-4 border-b-0 border-gray-700'>
                 <div className='sr-only'>
-                  A11yWatch: 208,633 scans per minute
+                  A11yWatch: 403,210+ scans per minute
                 </div>
               </div>
             </div>

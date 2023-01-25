@@ -22,7 +22,7 @@ export const HeadlessFullScreenModal: FC<
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
+          <div className='fixed inset-0 bg-gray-500 dark:bg-gray-700 bg-opacity-75 transition-opacity' />
         </Transition.Child>
         <div className='fixed inset-0 overflow-hidden'>
           <div className='absolute inset-0 overflow-hidden'>
@@ -39,7 +39,7 @@ export const HeadlessFullScreenModal: FC<
                 <Dialog.Panel
                   className={`pointer-events-auto relative w-screen ${modalSize}`}
                 >
-                  <div className='flex h-full flex-col overflow-y-scroll bg-white shadow-xl'>
+                  <div className='flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-xl'>
                     {children}
                   </div>
                 </Dialog.Panel>
