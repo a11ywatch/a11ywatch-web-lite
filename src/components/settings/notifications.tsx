@@ -28,7 +28,7 @@ export const NotificationSettings = ({
         <FormControl
           htmlFor='alerts-btn'
           visible
-          className={settingsHeadingStyle}
+          className={`font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl py-3 sm:leading-[1.1em] ${settingsHeadingStyle}`}
         >
           Notifications
         </FormControl>

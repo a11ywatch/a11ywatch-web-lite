@@ -6,7 +6,6 @@ import { settingsHeadingStyle } from '@app/styles/headings'
 
 export const HistoryView = () => {
   const { account } = useAuthContext()
-
   const { activeSubscription } = account
 
   return (

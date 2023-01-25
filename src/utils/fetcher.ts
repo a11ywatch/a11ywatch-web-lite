@@ -7,14 +7,15 @@ export const fetcher = async (
   body: Record<string, any> | null = null,
   method: 'GET' | 'POST' | 'DELETE' | 'PUT' = 'GET'
 ) => {
-  let data = { data: null as any, message: '', code: 200 }
-
   const headers = new Headers()
+  let data = { data: null as any, message: '', code: 200 }
+  let source = null
 
   if (UserManager.token) {
-    headers.append('authorization', UserManager.token)
+    headers.append('Authorization', UserManager.token)
   }
 
+  // todo: make optional content-tye
   if ((method === 'POST' && body) || method !== 'POST') {
     headers.append('Content-Type', 'application/json')
   }
@@ -22,20 +23,30 @@ export const fetcher = async (
   headers.append('Connection', 'keep-alive')
 
   try {
-    const source = await fetch(API_ENDPOINT + url, {
-      headers: headers,
-      method: body ? 'POST' : method,
-      body: body ? JSON.stringify(body) : null,
+    source = await fetch(API_ENDPOINT + url, {
+      headers,
+      method,
+      body: body ? JSON.stringify(body) : undefined,
     })
-    const ds = await source.json()
-
-    data = ds
   } catch (e) {
     let message = 'Unknown Error'
     if (e instanceof Error) {
       message = e.message
     }
     AppManager.toggleSnack(true, message, 'error')
+  }
+
+  // attempt to parse content to json if success
+  if (source && source.ok) {
+    try {
+      data = await source.json()
+    } catch (e) {
+      let message = 'Parse Error'
+      if (e instanceof Error) {
+        message = e.message
+      }
+      AppManager.toggleSnack(true, message, 'error')
+    }
   }
 
   return data

@@ -43,9 +43,8 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
   const role = data?.role
   const paymentSubscription = data?.paymentSubscription
   const manualCheckout = !paymentSubscription || newCard
-  const partnerProgram = !loading && role && !paymentSubscription
   // allow payments on all non maxed accounts
-  const subTitle = renderPaymentTitle(partnerProgram)
+  const subTitle = renderPaymentTitle(!loading && role && !paymentSubscription)
 
   const priceMultiplyier = yearly ? 0 : ''
   const currentPlan = roleMap(role)
@@ -99,7 +98,7 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
       <NavBar title={name} backButton notitle authenticated={account.authed} />
       <StateLessDrawer size='max-w-screen-2xl'>
         <SectionContainer container block gapY={false}>
-          {hideTitle ? null : <Header>Payments</Header>}
+          {hideTitle ? null : <Header>Billing</Header>}
           {loading && !data ? (
             <>
               <EmptyPayments subTitle={subTitle} />
@@ -116,57 +115,40 @@ function Payments({ hideTitle = false, name }: PaymentProps) {
                 highPlan={role > 5}
               />
               <div>
-                {!partnerProgram ? (
-                  <div className='space-y-8 py-1'>
-                    <div className='sm:w-full place-content-center place-items-center align-center min-w-[350px]'>
-                      <div className='space-y-3'>
-                        {!data?.activeSubscription || newCard ? (
-                          <>
-                            {newCard && data?.activeSubscription ? (
-                              <Button
-                                onClick={onToggleCard}
-                                className={'border-none font-semibold'}
-                              >
-                                Use Old Card
-                              </Button>
-                            ) : null}
-                            <StripProvider>
-                              <CheckoutForm
-                                onToken={onTokenEvent}
-                                plan={paymentPlan}
-                                price={selectedPrice}
-                                disabled={!paymentPlan}
-                              />
-                            </StripProvider>
-                          </>
-                        ) : (
-                          <Button
-                            onClick={onToggleCard}
-                            className={
-                              'border-none font-semibold text-blue-700'
-                            }
-                          >
-                            Add New Card
-                          </Button>
-                        )}
-                      </div>
+                <div className='space-y-8 py-1'>
+                  <div className='sm:w-full place-content-center place-items-center align-center min-w-[350px]'>
+                    <div className='space-y-3'>
+                      {!data?.activeSubscription || newCard ? (
+                        <>
+                          {newCard && data?.activeSubscription ? (
+                            <Button
+                              onClick={onToggleCard}
+                              className={'border-none font-semibold'}
+                            >
+                              Use Old Card
+                            </Button>
+                          ) : null}
+                          <StripProvider>
+                            <CheckoutForm
+                              onToken={onTokenEvent}
+                              plan={paymentPlan}
+                              price={selectedPrice}
+                              disabled={!paymentPlan}
+                            />
+                          </StripProvider>
+                        </>
+                      ) : (
+                        <Button
+                          onClick={onToggleCard}
+                          className={'border-none font-semibold text-blue-700'}
+                        >
+                          Add New Card
+                        </Button>
+                      )}
                     </div>
-                    <StripeBadges />
                   </div>
-                ) : (
-                  <div>
-                    <div className='text-base font-semibold'>
-                      Partner Program Enabled
-                    </div>
-                    <p>
-                      {paymentSubscription
-                        ? yearly
-                          ? 'Yearly'
-                          : 'Monthly'
-                        : 'Contact support to alter your plan'}
-                    </p>
-                  </div>
-                )}
+                  <StripeBadges />
+                </div>
               </div>
             </>
           )}

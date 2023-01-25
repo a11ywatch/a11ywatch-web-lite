@@ -53,24 +53,23 @@ function WebActionsPage() {
   )
 }
 
+// phase out page for components view
 function WebActions({ name }: PageProps) {
   const { account } = useAuthContext()
 
   return (
-    <>
-      <Drawer title={name}>
-        <PageTitle
-          title={account.activeSubscription ? name : 'Upgrade Required'}
-          rightButton={<AuthMenu authenticated={account.authed} settings />}
-        />
-        <Spacer height={'8px'} />
-        {account.activeSubscription ? (
-          <WebActionsPage />
-        ) : (
-          <PaymentPlans pricingPage />
-        )}
-      </Drawer>
-    </>
+    <Drawer>
+      <PageTitle
+        title={account.activeSubscription ? name : 'Upgrade Required'}
+        rightButton={<AuthMenu authenticated={account.authed} settings />}
+      />
+      <Spacer height={'8px'} />
+      {account.activeSubscription ? (
+        <WebActionsPage />
+      ) : (
+        <PaymentPlans pricingPage />
+      )}
+    </Drawer>
   )
 }
 

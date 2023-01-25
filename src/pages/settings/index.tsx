@@ -1,8 +1,7 @@
 import { SyntheticEvent, useCallback } from 'react'
-import { PageTitle, Drawer, AuthMenu } from '@app/components/general'
+import { PageTitle, AuthMenu } from '@app/components/general'
 import { useFeaturesData, useUserData } from '@app/data'
 import { metaSetter } from '@app/utils'
-import type { PageProps } from '@app/types'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { Header2 } from '@app/components/general/header'
 import { AppManager, UserManager } from '@app/managers'
@@ -12,12 +11,15 @@ import { HistoryView } from '@app/components/settings/history-view'
 import { CoreVitalsView } from '@app/components/settings/core-vitals-view'
 import { RemoveDataView } from '@app/components/settings/remove-data-view'
 import { LighthouseView } from '@app/components/settings/lighthouse-view'
+import { ActionsViewView } from '@app/components/settings/actions-view'
+
 import { useInteractiveContext } from '@app/components/providers/interactive'
 import { ThemesView } from '@app/components/settings/themes-view'
 import { LazyMount } from '@app/components/lazy/lazymount'
 import { ApiView } from '@app/components/settings/api-view'
+import { fetcher } from '@app/utils/fetcher'
 
-function Settings({ name }: PageProps) {
+function Settings() {
   const {
     settings: data, // user
     loading,
@@ -52,6 +54,21 @@ function Settings({ name }: PageProps) {
       }
     }
   }, [removeWebsite, setSelectedWebsite])
+
+  const onDeleteAccountPress = useCallback(async () => {
+    if (
+      window.confirm(
+        'Are you sure you want to delete your account and all data?'
+      )
+    ) {
+      try {
+        await fetcher('/user', null, 'DELETE')
+        window.location.href = '/'
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }, [])
 
   const onLighthouseToggle = useCallback(() => {
     setLighthouseVisibility((visible: boolean) => {
@@ -103,7 +120,7 @@ function Settings({ name }: PageProps) {
   }
 
   return (
-    <Drawer title={name}>
+    <div className='px-4 py-2 mx-auto container'>
       <PageTitle
         title={'Settings'}
         rightButton={<AuthMenu authenticated={account.authed} settings />}
@@ -127,6 +144,7 @@ function Settings({ name }: PageProps) {
           onConfirmLighthouse={onConfirmLighthouse}
           user={data?.user}
         />
+        <ActionsViewView user={data?.user} />
         <LazyMount>
           <ThemesView />
         </LazyMount>
@@ -134,9 +152,12 @@ function Settings({ name }: PageProps) {
         <LazyMount>
           <HistoryView />
         </LazyMount>
-        <RemoveDataView onRemoveAllWebsitePress={onRemoveAllWebsitePress} />
+        <RemoveDataView
+          onRemoveAllWebsitePress={onRemoveAllWebsitePress}
+          onDeleteAccountPress={onDeleteAccountPress}
+        />
       </div>
-    </Drawer>
+    </div>
   )
 }
 

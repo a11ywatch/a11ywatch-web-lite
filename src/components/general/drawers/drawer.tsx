@@ -1,12 +1,8 @@
-import { memo } from 'react'
+import { FC, memo, PropsWithChildren } from 'react'
 import dynamic from 'next/dynamic'
 import { useUserData } from '@app/data'
-import { UpgradeBanner } from '@app/components/general/upgrade-banner'
-import { AuthedMenu } from '../navigation'
 import { NavBar } from '../navigation/navbar'
-import { FixedCopyRight } from '../fixed-copy-right'
 import { ConfirmEmail } from '../../alerts'
-import { IssueFeed } from '../../feed'
 import { SearchBar } from '../searchbar'
 import { DrawerHead } from './drawer-head'
 
@@ -28,36 +24,6 @@ export type DrawerWrapperProps = {
   loading?: boolean
 }
 
-function MainDrawerContainerComponent({ route, loading }: DrawerWrapperProps) {
-  return (
-    <div
-      className={`flex flex-col overflow-x-hidden w-[55px] sm:w-[15vw] md:w-[18vw] lg:w-[250px] max-w-[250px] relative print:hidden overflow-hidden`}
-    >
-      <div className='fixed flex flex-col w-[inherit] overflow-hidden h-full bg-lightgray dark:bg-inherit z-10 space-y-3 place-content-between'>
-        <AuthedMenu route={route} loading={loading} />
-        <div>
-          <UpgradeBanner />
-          <div className='invisible md:visible w-full flex place-content-center py-2 truncate'>
-            <FixedCopyRight />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export const MainDrawerContainer = memo(MainDrawerContainerComponent)
-
-export function DrawerWrapperComponent({
-  route: routePath,
-  title = '',
-  loading,
-}: DrawerWrapperProps) {
-  return <MainDrawerContainer route={routePath ?? title} loading={loading} />
-}
-
-export const DrawerWrapper = memo(DrawerWrapperComponent)
-
 export function NavigationBar({ title = '', authenticated }: any) {
   return (
     <NavBar authenticated={authenticated} title={title}>
@@ -68,17 +34,14 @@ export function NavigationBar({ title = '', authenticated }: any) {
   )
 }
 
-export function DrawerW({ children, route, title }: any) {
-  const { data: dataSourceMap, sendConfirmEmail, loading } = useUserData()
+export const DrawerW: FC<PropsWithChildren> = ({ children }) => {
+  const { data: dataSourceMap, sendConfirmEmail } = useUserData()
   const user = dataSourceMap?.user
 
   return (
     <>
       <DrawerHead />
       <div className={'flex overflow-x-inherit md:overflow-x-hidden'}>
-        {user?.role ? (
-          <DrawerWrapper route={route} title={title} loading={loading} />
-        ) : null}
         <main className={'flex-1 overflow-auto'} id='main-content'>
           <div
             className={
@@ -92,7 +55,6 @@ export function DrawerW({ children, route, title }: any) {
             visible={!!user?.loggedIn && !user?.emailConfirmed}
           />
         </main>
-        <IssueFeed />
       </div>
       <DynamicModal />
       <MiniPlayer />
