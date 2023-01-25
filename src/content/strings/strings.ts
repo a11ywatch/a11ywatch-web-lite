@@ -82,7 +82,7 @@ export const generateStrings = ({
         id: 8,
         title: 'Speed',
         detail:
-          'Reports run so fast that we can handle 10,000 pages within 1-5 mins on 8gb mem linux. The speed of the reports at this rate becomes a feature when you compare with others.',
+          'Reports run so fast that we can handle 10,000 - 100,000 pages within 1-5 mins on 8gb mem linux. The speed of the reports at this rate becomes a feature when you compare with others.',
       },
     ],
     alerts: {

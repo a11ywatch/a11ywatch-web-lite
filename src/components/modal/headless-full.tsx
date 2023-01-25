@@ -39,7 +39,7 @@ export const HeadlessFullScreenModal: FC<
                 <Dialog.Panel
                   className={`pointer-events-auto relative w-screen ${modalSize}`}
                 >
-                  <div className='flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-xl'>
+                  <div className='flex h-full flex-col overflow-y-scroll bg-white dark:bg-black'>
                     {children}
                   </div>
                 </Dialog.Panel>
