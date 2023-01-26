@@ -429,6 +429,7 @@ export type User = {
   resetCode?: string
   stripeID?: string
   invoice?: Invoice
+  usageAnchorDate?: number
 }
 
 export type UserAnalyticsArgs = {

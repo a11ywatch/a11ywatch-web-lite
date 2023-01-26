@@ -16,6 +16,7 @@ const GET_USER = gql`
         lastScanDate
         totalUptime
       }
+      usageAnchorDate
     }
   }
 `
@@ -36,6 +37,7 @@ const GET_USER_SETTINGS = gql`
         lastScanDate
         totalUptime
       }
+      usageAnchorDate
     }
   }
 `
@@ -57,6 +59,7 @@ const GET_USER_PROFILE = gql`
         lastScanDate
         totalUptime
       }
+      usageAnchorDate
       invoice {
         amount_due
         amount_paid
