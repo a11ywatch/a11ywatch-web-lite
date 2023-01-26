@@ -5,7 +5,6 @@ import { observer } from 'mobx-react-lite'
 
 import { AppManager } from '@app/managers'
 import { Link } from './link'
-import { GrClose } from 'react-icons/gr'
 import { Button } from './buttons'
 
 interface SnackProps {
@@ -27,6 +26,7 @@ const handleClose = (
 }
 
 const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
+  // todo: pass in email-confirmation to position snack bottom
   const snackStyle =
     !!AppManager.snackbar.open && !(topLevel && AppManager.modalActive)
       ? 'transition transform fixed z-100 bottom-0 inset-x-0 pb-2 sm:pb-5 scale-100 translate-y-0 ease-out duration-500 z-30'
@@ -59,14 +59,11 @@ const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
             </Link>
           ) : null}
         </div>
-        <Button
-          aria-label='close'
-          onClick={handleClose}
-          className={'border-0 md:py-2'}
-          iconButton
-        >
-          <GrClose className='grIcon text-sm' title='Close bar' />
-        </Button>
+        {!AppManager.snackbar.autoClose ? (
+          <Button onClick={handleClose} className={'border-0 md:py-2'}>
+            Dismiss
+          </Button>
+        ) : null}
       </div>
     </div>
   )

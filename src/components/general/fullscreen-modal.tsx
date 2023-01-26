@@ -50,7 +50,12 @@ function UpperInput({ data, url }: any) {
       await updateWebsite({
         variables: { url, customHeaders, filter: '' },
       })
-      AppManager.toggleSnack(true, 'Headers updated successfully.')
+      AppManager.toggleSnack(
+        true,
+        'Headers updated successfully.',
+        'message',
+        true
+      )
       // todo find website and apply headers
     } catch (e) {
       AppManager.toggleSnack(true, e, 'error')
@@ -58,7 +63,7 @@ function UpperInput({ data, url }: any) {
   }
 
   return (
-    <div className='py-2 space-y-2 px-4 mx-auto container'>
+    <div className='p-4 space-y-6 container mx-auto'>
       <InputHeaders {...inputProps} />
       <Button onClick={onUpdateWebsite}>Update</Button>
     </div>
@@ -239,7 +244,7 @@ export function FullScreenModalWrapper(props: FullScreenModalProps) {
 
   return (
     <HeadlessFullScreenModal open={open} onClose={handleClose}>
-      <div className='flex w-full py-1.5 px-5 place-items-center place-content-between border-b'>
+      <div className='flex w-full py-1.5 px-3 place-items-center place-content-between border-b'>
         <div className={'flex gap-x-2 place-items-center'}>
           <Button onClick={handleClose} aria-label='close' iconButton>
             <GrClose className='grIcon inline-block text-black text-sm md:text-base dark:text-white' />

@@ -13,13 +13,13 @@ export function InputHeadersComponent({
 }: any) {
   if (customHeader) {
     return (
-      <div className='border-t'>
+      <ul className='border-t list-style-none py-1'>
         {customFields?.map((item: any, index: number) => {
           const inputKeyName = 'Key'
           const inputValueName = 'Value'
 
           return (
-            <div className={`flex flex-1 px-1 space-x-2`} key={index}>
+            <li className={`flex flex-1 px-1 space-x-2`} key={index}>
               <TextField
                 autoFocus
                 underline
@@ -62,13 +62,13 @@ export function InputHeadersComponent({
                   onClick={addFormField}
                   iconButton
                 >
-                  <GrAddCircle />
+                  <GrAddCircle className='grIcon' />
                 </Button>
               ) : null}
-            </div>
+            </li>
           )
         })}
-      </div>
+      </ul>
     )
   }
   return null

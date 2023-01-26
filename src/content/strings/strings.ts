@@ -51,7 +51,7 @@ export const generateStrings = ({
         id: 3,
         title: 'Integrations',
         detail:
-          'Integrations for any situation with direct access to the same engine across any platform or 3rd party tool.',
+          'Multiple integrations available with direct access to the same engine across products or 3rd party tools.',
         icon: 'accessibility',
       },
       {
@@ -82,7 +82,7 @@ export const generateStrings = ({
         id: 8,
         title: 'Speed',
         detail:
-          'Reports run so fast that we can handle 10,000 - 100,000 pages within 1-5 mins on 8gb mem linux. The speed of the reports at this rate becomes a feature when you compare with others.',
+          'Reports run so fast that we can handle 10,000 - 100,000 pages within 1-5 mins on 8gb memory linux. The speed of the reports at this rate becomes a feature when you compare with others.',
       },
     ],
     alerts: {

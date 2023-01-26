@@ -22,7 +22,8 @@ function CtaInputRest({
         return AppManager.toggleSnack(
           true,
           `Please enter a valid web url`,
-          'error'
+          'error',
+          true
         )
       }
       await toggleModal({ query: search, standard })

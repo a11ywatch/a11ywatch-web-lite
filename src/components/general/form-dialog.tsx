@@ -212,7 +212,8 @@ export function FormDialogWrapper({
         AppManager.toggleSnack(
           true,
           'Checking all pages for issues, please wait...',
-          'success'
+          'success',
+          true
         )
         try {
           await addWebsite({

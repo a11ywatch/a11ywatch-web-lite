@@ -31,6 +31,8 @@ class AppManager {
 
   dismissAnnotation = () => {}
 
+  clearTimer: NodeJS.Timeout | null = null
+
   @action
   toggleOverlay = (method?: any, open?: boolean) => {
     if (this.overlay) {
@@ -76,21 +78,27 @@ class AppManager {
     open: boolean,
     title: any,
     type: 'message' | 'success' | 'error' = 'message',
-    autoClose?: boolean,
+    autoClose: boolean = true,
     showBtn?: boolean
   ): void => {
-    const snackTitle = Array.isArray(title)
-      ? title.length
-        ? title[0].message
-        : 'Error'
-      : title
-
     this.snackbar = {
-      title: snackTitle,
+      title: Array.isArray(title)
+        ? title.length
+          ? title[0].message
+          : 'Error'
+        : title,
       type,
       open,
       autoClose: autoClose || false,
       showBtn: !!showBtn,
+    }
+
+    this.clearTimer && clearTimeout(this.clearTimer)
+
+    if (autoClose) {
+      this.clearTimer = setTimeout(() => {
+        this.resetSnackbar()
+      }, 4000)
     }
   }
 }
