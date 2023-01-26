@@ -242,7 +242,7 @@ export function FullScreenModalWrapper(props: FullScreenModalProps) {
       <div className='flex w-full py-1.5 px-5 place-items-center place-content-between border-b'>
         <div className={'flex gap-x-2 place-items-center'}>
           <Button onClick={handleClose} aria-label='close' iconButton>
-            <GrClose className='grIcon inline-block text-black text-sm md:text-base' />
+            <GrClose className='grIcon inline-block text-black text-sm md:text-base dark:text-white' />
           </Button>
           <NavBarTitle title={title} />
         </div>

@@ -49,7 +49,7 @@ export const generateStrings = ({
       },
       {
         id: 3,
-        title: 'Jampacked Integrations',
+        title: 'Integrations',
         detail:
           'Integrations for any situation with direct access to the same engine across any platform or 3rd party tool.',
         icon: 'accessibility',
