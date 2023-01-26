@@ -11,7 +11,6 @@ module.exports = {
     '/web-issues',
     '/web-view',
     '/web-actions',
-    '/web-pages',
     '/settings',
     '/profile',
     '/api',

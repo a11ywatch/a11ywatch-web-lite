@@ -81,15 +81,6 @@ export function AuthMenu({ authenticated, settings }: AuthMenuComponentProps) {
               )}
             </Menu.Item>
           ) : null}
-          {router?.pathname !== '/web-pages' ? (
-            <Menu.Item>
-              {() => (
-                <Link href={'/web-pages'} className={menuItemCss}>
-                  Pages
-                </Link>
-              )}
-            </Menu.Item>
-          ) : null}
           {router?.pathname !== '/payments' ? (
             <Menu.Item>
               {() => (

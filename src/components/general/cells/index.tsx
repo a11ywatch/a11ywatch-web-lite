@@ -1,6 +1,5 @@
 export { WebsiteCell } from './website-cell'
 export { WebsiteCellDashboard } from './website-cell-dashboard'
-export { FeaturesCell } from './features-cell'
 export { IssueFeedCell } from './issue-feed-cell'
 export {
   PageLoad,
