@@ -81,7 +81,9 @@ const WebsiteInteractiveBlock = ({
       <Link
         title={`view in sandbox ${url}`}
         href={linkUrl}
-        className={'hover:opacity-70 p-2 rounded text-xs md:text-sm lg:text-lg'}
+        className={
+          'hover:text-blue-700 p-2 rounded text-xs md:text-sm lg:text-lg'
+        }
       >
         <GrChannel className='grIcon' />
       </Link>
@@ -248,7 +250,7 @@ export function WebsiteCellDashboard({
                   <Link
                     title={`view details ${url}`}
                     href={linkView}
-                    className={`${styles.title} p-0`}
+                    className={`${styles.title} hover:text-blue-700 p-0`}
                   >
                     {domainHost}
                   </Link>
