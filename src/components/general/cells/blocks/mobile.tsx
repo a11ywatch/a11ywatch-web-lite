@@ -1,6 +1,5 @@
 import React, { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrPhoneFlip } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 
 export const MobileBoxWrapper = ({
@@ -30,10 +29,7 @@ export const MobileBoxWrapper = ({
   const labelId = `${url}-mobile-form`
 
   return (
-    <InfoBlock
-      title={'Mobile'}
-      icon={<GrPhoneFlip className='grIcon fill-black dark:fill-white' />}
-    >
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center'>
         <label className='text-sm font-medium' htmlFor={labelId}>
           Mobile

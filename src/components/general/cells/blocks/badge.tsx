@@ -1,11 +1,11 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrShield } from 'react-icons/gr'
 import { prismStyles } from '@app/styles'
 import { copyClipboard } from '@app/lib'
 import { PrismLight } from 'react-syntax-highlighter'
 import { Link } from '@app/components/general'
 
+// todo: remove usage on dashboard cell
 export const StatusBadgeBoxWrapper = ({
   statusBadgeUrl,
   reportsLink,
@@ -26,10 +26,10 @@ export const StatusBadgeBoxWrapper = ({
   const labelId = `${domain}-form-markdown`
 
   return (
-    <InfoBlock title={'Badge'} icon={<GrShield className='grIcon' />}>
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center overflow-hidden'>
         <label className='text-sm font-medium' htmlFor={labelId}>
-          Markdown
+          Badge
         </label>
         <input
           checked={isMarkdown}
@@ -37,7 +37,7 @@ export const StatusBadgeBoxWrapper = ({
           id={labelId}
           onChange={() => setMarkdown((minified: boolean) => !minified)}
           className={
-            ' outline-none relative inline-flex flex-shrink-0 h-4 w-7 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+            'outline-none relative inline-flex flex-shrink-0 h-4 w-7 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
           }
         ></input>
       </div>

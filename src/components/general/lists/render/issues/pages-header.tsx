@@ -1,12 +1,11 @@
 import { Button } from '@app/components/general/buttons'
+import { Link } from '@app/components/general/link'
 import { usePageSpeed } from '@app/data/external/pagespeed/results'
 import { memo, useMemo } from 'react'
 import { GrView } from 'react-icons/gr'
 
 type CellHeaderProps = {
   url?: string
-  setVisible(x: any): void
-  visible?: boolean
   totalIssues?: number
   warningCount?: number
   errorCount?: number
@@ -19,8 +18,6 @@ type CellHeaderProps = {
 
 const ListCellPagesHeaderW = ({
   url = '',
-  setVisible,
-  visible,
   online,
   pageInsights,
   duration,
@@ -32,8 +29,6 @@ const ListCellPagesHeaderW = ({
       handleMainClick(eventData, 'Lighthouse', false, url)()
     }
   })
-
-  const onTogglelist = () => setVisible((v: boolean) => !v)
 
   const pathName = useMemo(() => {
     if (typeof window !== 'undefined' && url) {
@@ -49,14 +44,13 @@ const ListCellPagesHeaderW = ({
   // return a small single row of the page and issues with a dropdown
   return (
     <div className='flex place-items-center text-xs md:text-sm'>
-      <button
-        className={`px-4 py-3 text-left place-items-center hover:opacity-80 flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate`}
-        onClick={onTogglelist}
-        aria-expanded={visible}
-        aria-label={`Toggle section visible for ${url}`}
+      <Link
+        className={`px-4 py-3 text-left place-items-center flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate text-xs md:text-sm hover:text-blue-800`}
+        href={url}
+        target='_blank'
       >
         {pathName}
-      </button>
+      </Link>
       <div className='grid grid grid-cols-3 auto-cols-max text-center place-items-center text-right'>
         <div className='w-[2.4rem] md:w-[3rem]'>
           {pageInsights ? (

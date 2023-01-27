@@ -1,17 +1,15 @@
-import { classNames } from '@app/utils/classes'
 import React, { FC, PropsWithChildren } from 'react'
+import { classNames } from '@app/utils/classes'
 
 const styles = {
-  infoContainer: 'px-4 py-2.5 flex flex-col flex-1 text-base justify-start',
+  infoContainer: 'px-4 py-2.5 flex flex-col flex-1 text-base justify-start space-y-0.5',
   infoBorder: '',
   p: 'text-base',
-  spacing: 'pt-2',
   row: 'flex place-items-center space-x-2',
 }
 
 type BaseProps = PropsWithChildren<{
-  title: string
-  titleButton?: React.ReactElement
+  title?: string
   icon?: any
   className?: string
 }>
@@ -19,8 +17,7 @@ type BaseProps = PropsWithChildren<{
 export const InfoBlock: FC<BaseProps> = ({
   children,
   title,
-  titleButton,
-  icon = null,
+  icon,
   className,
 }) => {
   return (
@@ -30,12 +27,12 @@ export const InfoBlock: FC<BaseProps> = ({
         className
       )}
     >
-      <div className={styles.row}>
-        {icon}
-        <p className={styles.p}>{title}</p>
-        {titleButton}
-      </div>
-      <div className={styles.spacing} />
+      {title || icon ? (
+        <div className={styles.row}>
+          {icon}
+          {title ? <p className={styles.p}>{title}</p> : null}
+        </div>
+      ) : null}
       <div className='text-sm'>{children}</div>
     </div>
   )

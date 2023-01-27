@@ -1,6 +1,5 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrBladesVertical } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { classNames } from '@app/utils/classes'
 import { checkBoxStyle } from '@app/styles/checkbox'
@@ -33,10 +32,7 @@ export const SubDomainsBoxWrapper = ({
   const labelId = `${url}-subdomains-form`
 
   return (
-    <InfoBlock
-      title={'Subdomains'}
-      icon={<GrBladesVertical className='grIcon' />}
-    >
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center'>
         <FormControl
           htmlFor={labelId}

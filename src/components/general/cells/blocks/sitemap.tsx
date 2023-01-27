@@ -1,6 +1,5 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrCluster } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { classNames } from '@app/utils/classes'
 import { checkBoxStyle } from '@app/styles/checkbox'
@@ -33,7 +32,7 @@ export const SitemapBoxWrapper = ({
   const labelId = `${url}-sitemap-form`
 
   return (
-    <InfoBlock title={'Sitemap'} icon={<GrCluster className='grIcon' />}>
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center'>
         <FormControl
           htmlFor={labelId}

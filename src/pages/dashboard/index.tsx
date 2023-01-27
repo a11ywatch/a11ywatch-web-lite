@@ -100,6 +100,7 @@ function Dashboard() {
   return (
     <>
       <DashboardDrawer>
+        <h1 className='sr-only'>Dashboard Panel</h1>
         {account.activeSubscription ? (
           <>
             <ViewConfigTitle title={'All sites'}>
@@ -131,7 +132,6 @@ function Dashboard() {
             />
           </StateLessViewConfigTitle>
         )}
-
         <div className={queryStyle}>
           <div className='py-4 h-full'>
             <div className='flex flex-col place-items-center place-content-center space-y-6'>

@@ -1,6 +1,5 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrBladesHorizontal } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { classNames } from '@app/utils/classes'
 import { checkBoxStyle } from '@app/styles/checkbox'
@@ -33,7 +32,7 @@ export const TLDBoxWrapper = ({
   const labelId = `${url}-tld-form`
 
   return (
-    <InfoBlock title={'TLDs'} icon={<GrBladesHorizontal className='grIcon' />}>
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center'>
         <FormControl
           htmlFor={labelId}

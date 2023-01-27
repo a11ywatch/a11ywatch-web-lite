@@ -43,9 +43,9 @@ function ViewConfigTitle({
               'w-full md:w-auto border rounded px-3 py-1.5 text-sm font-medium flex place-items-center place-content-between gap-x-3'
             }
           >
-            <h1 className={'min-w-[80px] max-w-[180px] truncate text-left'}>
+            <div className={'min-w-[80px] max-w-[180px] truncate text-left'}>
               {pageTitle || title}
-            </h1>
+            </div>
             <GrStatusGoodSmall className='grIcon text-[9px] text-gray-400' />
           </Popover.Button>
           <Popover.Panel className='absolute z-10 w-96 py-1'>

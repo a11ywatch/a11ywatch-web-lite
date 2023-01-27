@@ -1,6 +1,5 @@
 import { memo, useState } from 'react'
 import { InfoBlock } from '../info-block'
-import { GrRobot } from 'react-icons/gr'
 import { useWebsiteContext } from '@app/components/providers/website'
 import { checkBoxStyle } from '@app/styles/checkbox'
 
@@ -29,7 +28,7 @@ export const RobotsBoxWrapper = ({
   const labelId = `${url}-robots-form`
 
   return (
-    <InfoBlock title={'Robots'} icon={<GrRobot className='grIcon' />}>
+    <InfoBlock>
       <div className='flex space-x-1 place-items-center'>
         <label className='text-sm font-medium' htmlFor={labelId}>
           Robots

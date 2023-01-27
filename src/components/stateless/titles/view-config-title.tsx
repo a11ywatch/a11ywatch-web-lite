@@ -25,9 +25,9 @@ function StateLessViewConfigTitle({
           'w-full md:w-auto border rounded px-3 py-1.5 text-sm font-medium flex place-items-center place-content-between gap-x-3'
         }
       >
-        <h1 className={'min-w-[80px] max-w-[180px] truncate text-left'}>
+        <div className={'min-w-[80px] max-w-[180px] truncate text-left'}>
           {title}
-        </h1>
+        </div>
         <GrStatusGoodSmall className='grIcon text-[9px] text-gray-400' />
       </div>
       {children}

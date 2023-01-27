@@ -181,33 +181,26 @@ export function WebsiteCellDashboard({
       }
     }
 
-  const {
-    statusBadgeUrl,
-    reportsLink,
-    reportsPageLink,
-    linkUrl,
-    linkView,
-    domainHost,
-  } = useMemo(() => {
-    // TODO: REMOVE ALL URL CLIENT APPENDING
-    const encodedUrl = encodeURIComponent(url)
-    const statusBadgeUrl = `${STATUS_URL}/${encodeURIComponent(domain)}`
+  const { statusBadgeUrl, reportsLink, reportsPageLink, linkUrl, domainHost } =
+    useMemo(() => {
+      // TODO: REMOVE ALL URL CLIENT APPENDING
+      const encodedUrl = encodeURIComponent(url)
+      const statusBadgeUrl = `${STATUS_URL}/${encodeURIComponent(domain)}`
 
-    const reportsLink = `${BASE_GQL_URL}/${encodedUrl}`
-    const reportsPageLink = `/reports/${encodedUrl}`
-    // hostname should always be valid - ignore try catching
-    const hostname = url && new URL(url).hostname
+      const reportsLink = `${BASE_GQL_URL}/${encodedUrl}`
+      const reportsPageLink = `/reports/${encodedUrl}`
+      // hostname should always be valid - ignore try catching
+      const hostname = url && new URL(url).hostname
 
-    return {
-      domainHost: hostname,
-      statusBadgeUrl,
-      encodedUrl,
-      reportsLink,
-      reportsPageLink,
-      linkUrl: `/website-details?url=${encodedUrl}`,
-      linkView: `/web-view?url=${encodedUrl}`,
-    }
-  }, [domain, url])
+      return {
+        domainHost: hostname,
+        statusBadgeUrl,
+        encodedUrl,
+        reportsLink,
+        reportsPageLink,
+        linkUrl: `/website-details?url=${encodedUrl}`,
+      }
+    }, [domain, url])
 
   const pagecount = issuesInfo?.pageCount || 0
   const issueTotal = issuesInfo?.totalIssues || 0
@@ -248,8 +241,8 @@ export function WebsiteCellDashboard({
               <div className={`flex place-items-center truncate flex-wrap`}>
                 <div className='pr-4'>
                   <Link
-                    title={`view details ${url}`}
-                    href={linkView}
+                    href={url}
+                    target='_blank'
                     className={`${styles.title} hover:text-blue-700 p-0`}
                   >
                     {domainHost}

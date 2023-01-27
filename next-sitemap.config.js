@@ -9,7 +9,6 @@ module.exports = {
     '/payments',
     '/website-details/*',
     '/web-issues',
-    '/web-view',
     '/web-actions',
     '/settings',
     '/profile',
