@@ -3,6 +3,12 @@ import { dev } from './app-config'
 export const Routes = [
   {
     nav: false,
+    href: '/climate',
+    name: 'Climate',
+    type: 'resources',
+  },
+  {
+    nav: false,
     href: '/faq',
     name: 'FAQ',
     type: 'resources',
