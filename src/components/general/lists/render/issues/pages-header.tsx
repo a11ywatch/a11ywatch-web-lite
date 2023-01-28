@@ -30,24 +30,26 @@ const ListCellPagesHeaderW = ({
     }
   })
 
-  const pathName = useMemo(() => {
+  const [pathName, link] = useMemo(() => {
     if (typeof window !== 'undefined' && url) {
       try {
         const u = new URL(url)
-        return `${u.pathname}${u.search}`
+        const p = `${u.pathname}${u.search}`
+
+        return [p, `/website-details?url=${encodeURI(url)}`]
       } catch (e) {
         console.error(e)
       }
     }
+    return ['', '']
   }, [url])
 
   // return a small single row of the page and issues with a dropdown
   return (
-    <div className='flex place-items-center text-xs md:text-sm'>
+    <li className='flex place-items-center text-xs md:text-sm'>
       <Link
         className={`px-4 py-3 text-left place-items-center flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate text-xs md:text-sm hover:text-blue-800`}
-        href={url}
-        target='_blank'
+        href={link}
       >
         {pathName}
       </Link>
@@ -68,7 +70,7 @@ const ListCellPagesHeaderW = ({
           {duration ? `${duration}ms` : 'N/A'}
         </div>
       </div>
-    </div>
+    </li>
   )
 }
 

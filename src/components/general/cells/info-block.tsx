@@ -2,7 +2,8 @@ import React, { FC, PropsWithChildren } from 'react'
 import { classNames } from '@app/utils/classes'
 
 const styles = {
-  infoContainer: 'px-4 py-2.5 flex flex-col flex-1 text-base justify-start space-y-0.5',
+  infoContainer:
+    'px-4 py-2.5 flex flex-col flex-1 text-base justify-start space-y-0.5',
   infoBorder: '',
   p: 'text-base',
   row: 'flex place-items-center space-x-2',
