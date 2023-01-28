@@ -9,13 +9,6 @@ export const searchQuery = (
   if (!url) {
     return ['', false]
   }
-  let autoTPT = false
 
-  if (/^(http|https)/.test(url) === false) {
-    autoTPT = true
-  }
-
-  const target = initUrl(url, insecureTransport)
-
-  return [target, autoTPT]
+  return [initUrl(url, insecureTransport), !(url.startsWith("http") || url.startsWith("https"))]
 }

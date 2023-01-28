@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { isUrl } from '@app/lib/is-url'
 import { AppManager, UserManager } from '@app/managers'
 import { searchQuery } from '@app/utils'
 import type { Website } from '@app/types'
@@ -34,7 +33,7 @@ export function useSearchRest() {
 
     setScan({ loading: true })
 
-    const [querySearch, autoTPT] = markup ? ['', false] : searchQuery(q)
+    const [querySearch, autoTPT] = markup ? ['', false] : searchQuery(q, q && q.startsWith("https") === false)
 
     let snackOpen = false
 
@@ -89,14 +88,6 @@ export function useSearchRest() {
   const toggleModal = async ({ html, standard, query }: ModalParams) => {
     if (html) {
       return await scanPage({ html, standard }, true)
-    }
-    // TODO: revisit url checking
-    if (!isUrl(query)?.origin) {
-      return AppManager.toggleSnack(
-        true,
-        'Please enter a valid website url starting with http:// or https://',
-        'error'
-      )
     }
     return await scanPage({ query, standard }, false)
   }
