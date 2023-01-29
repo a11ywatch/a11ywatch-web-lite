@@ -44,7 +44,9 @@ export const NotificationSettings = ({
         disabled={!alertEnabled}
         defaultDayTime={defaultDayTime}
       />
-      <p className='text-xs pt-2'>Usage is used when notifications is enabled.</p>
+      <p className='text-xs pt-2'>
+        Usage is used when notifications is enabled.
+      </p>
     </div>
   )
 }

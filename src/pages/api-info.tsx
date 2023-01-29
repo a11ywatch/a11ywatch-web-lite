@@ -110,7 +110,7 @@ function ApiInfo() {
 
           <Box>
             <ul className='space-y-3 py-2'>
-              {apiRoutes.map((ro) => {
+              {apiRoutes.map((ro, i: number) => {
                 return (
                   <li key={ro.title} id={ro.id}>
                     <div className='py-4'>
@@ -121,8 +121,8 @@ function ApiInfo() {
                       </div>
                     </div>
                     <ul className='space-y-3 py-2'>
-                      {ro.routes.map((route: any, i) => {
-                        const routeKey = `api-info-route-${i}`
+                      {ro.routes.map((route: any, ii: number) => {
+                        const routeKey = `api-info-route-${i}-${ii}`
 
                         return (
                           <ApiCell

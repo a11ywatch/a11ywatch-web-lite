@@ -10,5 +10,8 @@ export const searchQuery = (
     return ['', false]
   }
 
-  return [initUrl(url, insecureTransport), !(url.startsWith("http") || url.startsWith("https"))]
+  return [
+    initUrl(url, insecureTransport),
+    !(url.startsWith('http') || url.startsWith('https')),
+  ]
 }

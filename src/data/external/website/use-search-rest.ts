@@ -33,7 +33,9 @@ export function useSearchRest() {
 
     setScan({ loading: true })
 
-    const [querySearch, autoTPT] = markup ? ['', false] : searchQuery(q, q && q.startsWith("https") === false)
+    const [querySearch, autoTPT] = markup
+      ? ['', false]
+      : searchQuery(q, q && q.startsWith('https') === false)
 
     let snackOpen = false
 

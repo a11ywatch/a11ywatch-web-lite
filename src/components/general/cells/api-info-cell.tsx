@@ -69,6 +69,8 @@ ${
     navigator.clipboard.writeText(curlCommand)
   }
 
+  const targetCopyID = id + 'copy-text';
+
   return (
     <li className={'text-base border-2 rounded'}>
       <button
@@ -142,12 +144,12 @@ ${
             {curlCommand}
           </code>
           <div>
-            <span id={id + 'copy-text'} className='sr-only'>
+            <span id={targetCopyID} className='sr-only'>
               Copy the curl command to clipboard
             </span>
             <button
               className='py-1 px-3 rounded border-2'
-              aria-labelledby={id + 'copy-text'}
+              aria-labelledby={targetCopyID}
               onClick={copyText}
             >
               <GrCopy title='Copy to clipboard' className='grIcon text-white' />
