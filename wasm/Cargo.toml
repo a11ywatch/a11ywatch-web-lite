@@ -1,6 +1,6 @@
 [package]
 name = "a11ywatch-web-wasm"
-version = "0.2.9"
+version = "0.2.10"
 description = "a11ywatch web wasm bundle"
 edition = "2021"
 license = "MIT"

@@ -66,7 +66,6 @@ export const websiteFragments = gql`
     _id
     url
     domain
-    cdnConnected
     lastScanDate
     online
     pageInsights

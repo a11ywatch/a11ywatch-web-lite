@@ -9,7 +9,6 @@ export const CRAWL_WEBSITE = gql`
       website {
         url
         domain
-        cdnConnected
         lastScanDate
         userId
         online
@@ -26,7 +25,6 @@ export const CRAWL_WEBSITE = gql`
           issuesFixedByCdn
           possibleIssuesFixedByCdn
           totalIssues
-          cdnConnected
           errorCount
           warningCount
           noticeCount

@@ -34,7 +34,6 @@ export type History = {
   pages?: Pages[]
   userId?: number
   domain?: string
-  cdnConnected?: boolean
   pageLoadTime?: PageLoadTimeMeta
   issuesInfo?: IssueMeta
   pageInsights?: boolean
@@ -83,7 +82,6 @@ export type IssueMeta = {
   issuesFixedByCdn?: number
   possibleIssuesFixedByCdn?: number
   totalIssues?: number
-  cdnConnected?: boolean
   skipContentIncluded?: boolean
   errorCount?: number
   warningCount?: number
@@ -306,29 +304,6 @@ export type ScanInformation = {
   totalUptime?: number
 }
 
-export type Script = {
-  __typename?: 'Script'
-  id?: string
-  pageUrl?: string
-  domain?: string
-  cdnUrl?: string
-  cdnUrlMinified?: string
-  cdnConnected?: boolean
-  issueMeta?: IssueMeta
-  scriptMeta?: ScriptMeta
-}
-
-export type ScriptMeta = {
-  __typename?: 'ScriptMeta'
-  skipContentEnabled?: boolean
-  translateEnabled?: boolean
-}
-
-export type ScriptMetaInput = {
-  skipContentEnabled?: boolean
-  translateEnabled?: boolean
-}
-
 export type Pages = {
   __typename?: 'Pages'
   _id?: string
@@ -337,7 +312,6 @@ export type Pages = {
   user?: User
   domain?: string
   userId?: number
-  cdnConnected?: boolean
   pageLoadTime?: PageLoadTimeMeta
   issues?: Issue[]
   issuesInfo?: IssueMeta
@@ -419,7 +393,6 @@ export type User = {
   history?: History[]
   scanInfo?: ScanInformation
   analytics?: Analytic[]
-  scripts?: Script[]
   paymentSubscription?: PaymentSubScription
   pageSpeedApiKey?: string
   websiteLimit?: number
@@ -452,14 +425,12 @@ export type Website = {
   user?: User
   userId?: number
   domain: string
-  cdnConnected?: boolean
   pageLoadTime?: PageLoadTimeMeta
   issues?: Issue
   issue?: PageIssue[]
   issuesInfo?: IssueMeta
   pages?: Pages
   lastScanDate?: string
-  cdn?: string
   pageHeaders?: PageHeaders[]
   online?: boolean
   timestamp?: string

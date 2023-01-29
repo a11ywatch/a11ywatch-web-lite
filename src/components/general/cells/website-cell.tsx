@@ -23,7 +23,6 @@ export function WebsiteCell(props: WebsiteCellProps) {
     handleClickOpen,
     issues,
     issuesInfo,
-    cdnConnected,
     pageLoadTime,
     mutatationLoading,
     lastScanDate,
@@ -58,18 +57,13 @@ export function WebsiteCell(props: WebsiteCellProps) {
     <li
       className={'border-b space-y-1 flex w-full px-3 py-2 hover:no-underline'}
     >
-      <RenderAvatar
-        cdnConnected={cdnConnected}
-        accessScore={accessScore}
-        error={false}
-      />
+      <RenderAvatar accessScore={accessScore} error={false} />
       <div className='space-y-2 flex flex-1 flex-col'>
         <Link href={href} className='text-lg'>
           {url}
         </Link>
         <RenderSecondary
           issuesInfo={issuesInfo}
-          cdnConnected={cdnConnected}
           accessScore={accessScore}
           issues={issues}
           pageLoadTime={pageLoadTime}

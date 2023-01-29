@@ -3,14 +3,8 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import { IframeManager } from '@app/managers'
-import { useIframe } from '@app/data'
 import { Box } from '@a11ywatch/ui'
-import {
-  GrList,
-  GrMultimedia,
-  GrStatusWarning,
-  GrTestDesktop,
-} from 'react-icons/gr'
+import { GrMultimedia, GrStatusWarning, GrTestDesktop } from 'react-icons/gr'
 import { issueExtractor } from '@app/utils'
 import { Button } from './buttons'
 import { useInteractiveContext } from '../providers/interactive'
@@ -20,7 +14,6 @@ const btnStyle =
 
 const MFab = observer(({ iframeStore, issue, marketing }: any) => {
   const { setMiniPlayerContent, miniPlayer } = useInteractiveContext()
-  const { highLight, toggleHighLight } = useIframe()
 
   const pageIssues = issueExtractor(issue)
 
@@ -48,16 +41,6 @@ const MFab = observer(({ iframeStore, issue, marketing }: any) => {
           )}
         </Button>
       ) : null}
-      {highLight?.display ? (
-        <Button
-          className={btnStyle}
-          onClick={toggleHighLight}
-          iconButton
-          title='Highlight elements fixed by CDN'
-        >
-          <GrList className={'grIcon'} />
-        </Button>
-      ) : null}
       {pageIssues?.length ? (
         <Button
           iconButton
@@ -71,14 +54,6 @@ const MFab = observer(({ iframeStore, issue, marketing }: any) => {
     </Box>
   )
 })
-
-// <Button
-//   onClick={adaStore.toggleScriptFix}
-//   className={"w-full py-3 place-items-center bg-transparent border-3"}
-//   variant='text'
-// >
-//   <CodeIcon color='secondary' />
-// </Button>
 
 export const Fab = ({ issue, marketing }: any) => (
   <MFab iframeStore={IframeManager} issue={issue} marketing={marketing} />

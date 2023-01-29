@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { frameDom } from '@app/managers'
-import { toggleHighLight } from './iframe'
 
 const GET_FIXFRAME_STATE = gql`
   query getIframeState {
@@ -42,6 +41,5 @@ export function useIframe() {
   return {
     highLight,
     setFrameContent,
-    toggleHighLight,
   }
 }

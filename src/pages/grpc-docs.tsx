@@ -991,20 +991,6 @@ function GrpcDocs({ name }: PageProps) {
               </tr>
 
               <tr>
-                <td>cdnConnected</td>
-                <td>
-                  <a href='#bool'>bool</a>
-                </td>
-                <td></td>
-                <td>
-                  <p>
-                    is the cdn for accessibility remediations connected on the
-                    page.{' '}
-                  </p>
-                </td>
-              </tr>
-
-              <tr>
                 <td>pageLoadTime</td>
                 <td>
                   <a href='#PageLoadTime'>PageLoadTime</a>

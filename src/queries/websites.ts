@@ -130,7 +130,6 @@ export const GET_WEBSITES_INFO = gql`
           _id
           url
           domain
-          cdnConnected
           tld
           subdomains
           issuesInfo {
@@ -155,7 +154,6 @@ export const GET_PAGES = gql`
           _id
           url
           domain
-          cdnConnected
           issuesInfo {
             accessScore
             accessScoreAverage

@@ -99,7 +99,6 @@ export function WebsiteCellDashboard({
   pages,
   issues: currentIssues,
   issuesInfo,
-  cdnConnected,
   crawlWebsite,
   pageLoadTime,
   lastScanDate,
@@ -255,7 +254,6 @@ export function WebsiteCellDashboard({
                         totalIssues > issueTotal ? totalIssues : issueTotal,
                     }}
                     pageIssueCount={pageIssueCount}
-                    cdnConnected={cdnConnected}
                     pageLoadTime={pageLoadTime}
                     lastScanDate={lastScanDate}
                     score={accessScore}

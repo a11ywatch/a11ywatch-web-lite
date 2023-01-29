@@ -18,8 +18,6 @@ pub struct PageLoadTime {
 pub struct Website {
     pub url: String,
     pub domain: String,
-    #[serde(rename = "cdnConnected")]
-    pub cdn_connected: bool,
     #[serde(rename = "issuesInfo")]
     pub issues_info: IssueInfo,
     pub issues: Option<Vec<Issue>>,

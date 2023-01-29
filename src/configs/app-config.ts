@@ -21,9 +21,6 @@ const BLOG_WEBFLOW_URL =
   process.env.BLOG_WEBFLOW_URL || 'https://a11ywatch-blog.webflow.io'
 
 // browser facing (proxy access from central api)
-const cdn = process.env.CDN || 'http://localhost:8090'
-
-const SCRIPTS_CDN_URL_HOST = `${cdn}/scripts`
 
 const SUPER_MODE = process.env.NEXT_PUBLIC_SUPER_MODE
 
@@ -53,11 +50,9 @@ export {
   DOMAIN_NAME,
   dev,
   AppConfig,
-  SCRIPTS_CDN_URL_HOST,
   GOOGLE_CLIENT_ID,
   STRIPE_KEY,
   SUPER_MODE,
-  cdn,
   companyName,
   twitterSite,
 }

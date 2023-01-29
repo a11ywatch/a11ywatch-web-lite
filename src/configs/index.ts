@@ -1,12 +1,10 @@
 export {
   DOMAIN_NAME,
   AppConfig,
-  SCRIPTS_CDN_URL_HOST,
   GOOGLE_CLIENT_ID,
   STRIPE_KEY,
   SUPER_MODE,
   dev,
-  cdn,
   companyName,
   twitterSite,
   BASE_GQL_URL,

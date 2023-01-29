@@ -28,7 +28,6 @@ export function WebsiteCellPagesComponent({
   pages,
   issues,
   issuesInfo,
-  cdnConnected,
   crawlWebsite,
   pageLoadTime,
   pageHeaders,
@@ -100,11 +99,7 @@ export function WebsiteCellPagesComponent({
   return (
     <li className={'px-3 pt-2'}>
       <div className='flex space-x-2 place-items-center'>
-        <div
-          className={`${styles.title} ${
-            cdnConnected ? 'text-blue-600' : ''
-          }flex-1`}
-        >
+        <div className={`${styles.title} flex-1`}>
           <Link
             title={`view in sandbox ${url}`}
             href={linkUrl}

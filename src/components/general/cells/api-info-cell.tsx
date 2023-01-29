@@ -69,7 +69,7 @@ ${
     navigator.clipboard.writeText(curlCommand)
   }
 
-  const targetCopyID = id + 'copy-text';
+  const targetCopyID = id + 'copy-text'
 
   return (
     <li className={'text-base border-2 rounded'}>

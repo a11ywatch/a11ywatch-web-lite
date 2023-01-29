@@ -2953,10 +2953,10 @@
   dependencies:
     tslib "^1.9.3"
 
-a11ywatch-web-wasm@0.2.9:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/a11ywatch-web-wasm/-/a11ywatch-web-wasm-0.2.9.tgz#de706d5ec95ca2032c5a5274789d9e58e6d84313"
-  integrity sha512-RZ84y25rUAVmGYNBBOlFFqMGbeXWA6tVpBDQqNI9LjKq5yvf53r0EF8fxWJfijPLWImg2y2cmu18p94vROeF/g==
+a11ywatch-web-wasm@0.2.10:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/a11ywatch-web-wasm/-/a11ywatch-web-wasm-0.2.10.tgz#32ea1e32e1dd851584c16988f3d76046f5be5511"
+  integrity sha512-J+B8sVh5HFBSJ/lS6wKQSmnxqBBVNhgLi7pdk5lm7avC01k7hkbdqwLRyVXbGIh1/eydYpKJWjJHvb3VKWRPCw==
 
 abab@^2.0.6:
   version "2.0.6"

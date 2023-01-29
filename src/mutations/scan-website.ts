@@ -11,8 +11,6 @@ const SCAN_WEBSITE = gql`
         _id
         url
         domain
-        cdnConnected
-        cdn
         userId
         lastScanDate
         timestamp
