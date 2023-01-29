@@ -12,11 +12,11 @@ export const IntroGraph: FC = () => {
           <li className='flex flex-1 px-2 h-full'>
             <div className='flex flex-col h-full place-content-end'>
               <div className='py-1' aria-hidden='true'>
-                <div className='text-base font-semibold'>403,210+</div>
+                <div className='text-base font-semibold'>1,038,145+</div>
               </div>
               <div className='px-2 bg-black dark:bg-white h-full w-20 rounded-t border-4 border-b-0 border-gray-700'>
                 <div className='sr-only'>
-                  A11yWatch: 403,210+ scans per minute
+                  A11yWatch: 1,038,145+ scans per minute
                 </div>
               </div>
             </div>
@@ -24,10 +24,10 @@ export const IntroGraph: FC = () => {
           <li className='flex flex-1 px-2 h-full'>
             <div className='flex flex-col h-full place-content-end'>
               <div className='py-1' aria-hidden='true'>
-                <div className='text-base font-semibold'>60%</div>
+                <div className='text-base font-semibold'>63%</div>
               </div>
               <div className='px-2 bg-black dark:bg-white h-[60%] w-20 rounded-t border-4 border-b-0 border-gray-700'>
-                <div className='sr-only'>60% coverage across issues</div>
+                <div className='sr-only'>63% coverage across issues</div>
               </div>
             </div>
           </li>
