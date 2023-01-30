@@ -17,7 +17,7 @@ const SingleList = () => {
       <div className='flex flex-1'>
         <TextSkeleton width={200} height={12} />
       </div>
-      <div className='grid grid grid-cols-2 gap-2 auto-cols-max'>
+      <div className='grid grid-cols-2 gap-2 auto-cols-max'>
         <div className='text-right pr-0.5'>
           <TextSkeleton width={12} height={12} />
         </div>

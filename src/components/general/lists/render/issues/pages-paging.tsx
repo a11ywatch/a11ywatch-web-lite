@@ -70,7 +70,7 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
       <div className='flex flex-col place-content-around'>
         <div className='h-[450px]'>
           <InnerWrapper data={issueSource.length} loading={loading}>
-            <ul className='list-none pr-4'>
+            <ul className='list-none pr-4 space-y-0.5'>
               {issueList.map((page) => (
                 <PagesList
                   key={page?._id ?? page.url ?? page.pageUrl}

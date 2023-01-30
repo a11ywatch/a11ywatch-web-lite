@@ -30,7 +30,7 @@ const RenderInnerIssuesWrapper: FC<any> = (props) => {
         if (!item) {
           break
         }
-        items.push(issueSource[i])
+        items.push(item)
       }
     }
 

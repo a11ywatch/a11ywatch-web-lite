@@ -24,8 +24,9 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
     () => (liveData?.length ? liveData : data) || [],
     [liveData, data]
   )
-  const issueList = useMemo(() => {
+  const [issueList, stats] = useMemo(() => {
     const items: Analytic[] = []
+    let errorCount = 0
 
     if (issueSource) {
       const base = (issueIndex + 1) * 10
@@ -35,11 +36,14 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
         if (!item) {
           break
         }
-        items.push(issueSource[i])
+        if (typeof item.errorCount === 'number') {
+          errorCount += item.errorCount
+        }
+        items.push(item)
       }
     }
 
-    return items
+    return [items, { errorCount: errorCount }]
   }, [issueIndex, issueSource])
 
   const onPrevSelect = () => {
@@ -64,11 +68,12 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
       <div className='flex flex-col place-content-around'>
         <div className='h-[450px]'>
           <InnerWrapper data={issueSource.length} loading={loading}>
-            <ul className='list-none'>
+            <ul className='list-none space-y-0.5'>
               {issueList.map((page) => (
                 <AnalyticsList
                   key={page?._id || page.pageUrl}
                   open={defaultOpen}
+                  totalErrors={stats.errorCount}
                   {...page}
                 />
               ))}
