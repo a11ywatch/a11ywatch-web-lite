@@ -32,10 +32,12 @@ export const RunnerSelectComponent = ({
       id: number
       name: string
     }[] = []
+
     if (selected.length === 3) {
       nextRunners = selected.filter((item) => item.name !== selected[2].name)
-    } else if (selected.length === 2 && selected[0] === selected[1]) {
-      nextRunners = [selected[0]]
+    } else if (selected.length === 2 && selected[0].name === selected[1].name) {
+      // remove selected item
+      nextRunners = []
     } else {
       nextRunners = selected
     }
@@ -55,17 +57,14 @@ export const RunnerSelectComponent = ({
     >
       <Listbox.Label className={'text-xs sr-only'}>Runners:</Listbox.Label>
       <div className='relative space-y-1'>
-        <Listbox.Button className='w-full cursor-default w-32 rounded-lg border bg-white dark:bg-black py-1 px-2 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 text-sm'>
+        <Listbox.Button className='relative text-xs w-full cursor-default w-32 rounded-lg border bg-white dark:bg-black py-1 px-2 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 hover:text-blue-800 hover:border-blue-800'>
           <span className='block truncate'>
             {selectedRunners.length
               ? selectedRunners.map((runner) => runner.name).join(', ')
               : 'Default Runner'}
           </span>
           <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
-            <GrCaretDownFill
-              className='grIcon h-5 w-5 text-gray-400'
-              aria-hidden='true'
-            />
+            <GrCaretDownFill className='grIcon h-5 w-5' aria-hidden='true' />
           </span>
         </Listbox.Button>
         <Transition
