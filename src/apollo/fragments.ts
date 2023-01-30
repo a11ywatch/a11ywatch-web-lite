@@ -72,6 +72,7 @@ export const websiteFragments = gql`
     mobile
     standard
     verified
+    monitoringEnabled
     insight {
       json
     }

@@ -20,9 +20,7 @@ export const StatusBadgeBoxWrapper = ({
   hideBadge?: boolean
 }) => {
   const [isMarkdown, setMarkdown] = useState<boolean>(true)
-
   const statusBadgeLanguage = isMarkdown ? 'markdown' : 'html'
-
   const labelId = `${domain}-form-markdown`
 
   return (

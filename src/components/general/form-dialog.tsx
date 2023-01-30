@@ -77,6 +77,7 @@ export function FormDialogWrapper({
   )
   const [robots, setRobots] = useState<boolean>(true)
   const [runners, setRunners] = useState<string[]>([])
+  const [monitoringEnabled, setMonitoring] = useState<boolean>(true)
 
   const headers = useInputHeader()
   const actions = useInputActions()
@@ -123,12 +124,11 @@ export function FormDialogWrapper({
       event?.preventDefault()
       if (!websitUrl) {
         // prevent empty
-        AppManager.toggleSnack(
+        return AppManager.toggleSnack(
           true,
           'Please enter a valid website url.',
           'error'
         )
-        return
       }
 
       let cleanUrl = String(websitUrl)
@@ -197,6 +197,7 @@ export function FormDialogWrapper({
         runners,
         proxy,
         sitemap,
+        monitoringEnabled,
       }
 
       // CLOSE pre-optimistic prevent dialog unmount state error
@@ -244,6 +245,7 @@ export function FormDialogWrapper({
       runners,
       proxy,
       sitemap,
+      monitoringEnabled,
     ]
   )
 
@@ -286,8 +288,13 @@ export function FormDialogWrapper({
   const onChangeTldEvent = () => {
     setTld((a: boolean) => !a)
   }
+
   const onChangeSitemapEvent = () => {
     setSitemap((a: boolean) => !a)
+  }
+
+  const onChangeMonitoringEvent = () => {
+    setMonitoring((a: boolean) => !a)
   }
 
   return (
@@ -456,6 +463,17 @@ export function FormDialogWrapper({
                   />
                   <FormControl htmlFor='headers' visible>
                     Headers
+                  </FormControl>
+                </div>
+
+                <div className={checkBoxContainerStyles}>
+                  <Checkbox
+                    checked={monitoringEnabled}
+                    onChange={onChangeMonitoringEvent}
+                    id={'monitoring'}
+                  />
+                  <FormControl htmlFor='monitoring' visible>
+                    Monitor
                   </FormControl>
                 </div>
 

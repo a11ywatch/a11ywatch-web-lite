@@ -3,17 +3,18 @@ import { MoreOptions } from '@app/components/general/cells/menu/more'
 import { Link } from '../link'
 import { WebsiteSecondary } from './render'
 import { BASE_GQL_URL, STATUS_URL } from '@app/configs/app-config'
+import { copyClipboard } from '@app/lib'
 
 import {
   PagesBox,
   LoadTimeBox,
   HeadersBox,
   LighthouseBox,
-  StatusBadgeBox,
   StandardBox,
   IssuesBox,
   WarningsBox,
   SitemapBox,
+  MonitoringEnabledBox,
   // OnlineBox,
 } from './blocks'
 import { MobileBox } from './blocks/mobile'
@@ -24,7 +25,7 @@ import { ActionsBox } from './blocks/actions'
 import { CdnFixBox } from './blocks/cdn-fix'
 import { useWasmContext } from '@app/components/providers'
 import { useAuthContext } from '@app/components/providers/auth'
-import { GrChannel, GrSync, GrValidate } from 'react-icons/gr'
+import { GrChannel, GrStatusInfo, GrSync, GrValidate } from 'react-icons/gr'
 import { fetcher } from '@app/utils/fetcher'
 import { AppManager, HomeManager } from '@app/managers'
 import { useInteractiveContext } from '@app/components/providers/interactive'
@@ -62,18 +63,23 @@ interface WebsiteCellProps {
 interface InteractiveProps extends Partial<WebsiteCellProps> {
   linkUrl: string
   onWebsiteCrawl(x: any): Promise<any>
+  statusBadgeUrl: string
 }
+
+const statusRowClass =
+  'hover:opacity-70 p-2 rounded text-xs md:text-sm lg:text-lg'
 
 const WebsiteInteractiveBlock = ({
   url,
   onWebsiteCrawl,
   linkUrl,
+  statusBadgeUrl,
 }: InteractiveProps) => {
   return (
     <div className='flex place-items-center px-2 space-x-3 py-2 border-t'>
       <button
         title={`sync and check ${url} for issues`}
-        className={'hover:opacity-70 p-2 rounded text-xs md:text-sm lg:text-lg'}
+        className={statusRowClass}
         onClick={onWebsiteCrawl}
       >
         <GrSync className='grIcon' />
@@ -81,12 +87,18 @@ const WebsiteInteractiveBlock = ({
       <Link
         title={`view in sandbox ${url}`}
         href={linkUrl}
-        className={
-          'hover:text-blue-700 p-2 rounded text-xs md:text-sm lg:text-lg'
-        }
+        className={statusRowClass}
       >
         <GrChannel className='grIcon' />
       </Link>
+      <button
+        title={`copy status badge ${url}`}
+        className={statusRowClass}
+        onClick={copyClipboard}
+      >
+        <span className='sr-only'>{statusBadgeUrl}</span>
+        <GrStatusInfo className='grIcon' />
+      </button>
     </div>
   )
 }
@@ -124,6 +136,7 @@ export function WebsiteCellDashboard({
   runners,
   proxy,
   sitemap,
+  monitoringEnabled,
 }: Website & WebsiteCellProps) {
   const { account } = useAuthContext() // TODO: move to provider top level
   const { feed } = useWasmContext()
@@ -180,26 +193,24 @@ export function WebsiteCellDashboard({
       }
     }
 
-  const { statusBadgeUrl, reportsLink, reportsPageLink, linkUrl, domainHost } =
-    useMemo(() => {
-      // TODO: REMOVE ALL URL CLIENT APPENDING
-      const encodedUrl = encodeURIComponent(url)
-      const statusBadgeUrl = `${STATUS_URL}/${encodeURIComponent(domain)}`
+  const { statusBadgeUrl, linkUrl, domainHost } = useMemo(() => {
+    // TODO: REMOVE ALL URL CLIENT APPENDING
+    const encodedUrl = encodeURIComponent(url)
+    const reportsLink = `${BASE_GQL_URL}/${encodedUrl}`
+    const reportsPageLink = `/reports/${encodedUrl}`
+    // hostname should always be valid - ignore try catching
+    const hostname = url && new URL(url).hostname
+    const badgeUrl = `${STATUS_URL}/${encodeURIComponent(domain)}`
 
-      const reportsLink = `${BASE_GQL_URL}/${encodedUrl}`
-      const reportsPageLink = `/reports/${encodedUrl}`
-      // hostname should always be valid - ignore try catching
-      const hostname = url && new URL(url).hostname
-
-      return {
-        domainHost: hostname,
-        statusBadgeUrl,
-        encodedUrl,
-        reportsLink,
-        reportsPageLink,
-        linkUrl: `/website-details?url=${encodedUrl}`,
-      }
-    }, [domain, url])
+    return {
+      domainHost: hostname,
+      encodedUrl,
+      reportsLink,
+      reportsPageLink,
+      linkUrl: `/website-details?url=${encodedUrl}`,
+      statusBadgeUrl: `[![A11yWatch](${`${badgeUrl}`})](${reportsLink})`,
+    }
+  }, [domain, url])
 
   const pagecount = issuesInfo?.pageCount || 0
   const issueTotal = issuesInfo?.totalIssues || 0
@@ -300,6 +311,7 @@ export function WebsiteCellDashboard({
             onWebsiteCrawl={onWebsiteCrawl}
             activeCrawl={activeCrawl}
             crawlDuration={crawlDuration}
+            statusBadgeUrl={statusBadgeUrl}
           />
         </div>
 
@@ -320,6 +332,10 @@ export function WebsiteCellDashboard({
           />
           <UserAgentBox ua={ua} url={url} />
           <StandardBox standard={standard} url={url} />
+          <MonitoringEnabledBox
+            enabled={monitoringEnabled}
+            url={url}
+          />
           <RobotsBox robots={robots} url={url} />
           <MobileBox mobile={mobile} url={url} />
           <SubDomainsBox
@@ -336,13 +352,6 @@ export function WebsiteCellDashboard({
             tld={tld}
             url={url}
             activeSubscription={account.activeSubscription}
-          />
-          <StatusBadgeBox
-            reportsLink={reportsLink}
-            statusBadgeUrl={statusBadgeUrl}
-            domain={domain}
-            reportsPageLink={reportsPageLink}
-            hideBadge
           />
         </div>
         {account.activeSubscription && (issuesInfo || liveData.length) ? (

@@ -4,7 +4,7 @@ import { classNames } from '@app/utils/classes'
 const styles = {
   infoContainer:
     'px-4 py-2.5 flex flex-col flex-1 text-base justify-start space-y-0.5',
-  infoBorder: '',
+  infoBorder: 'space-y-0.5',
   p: 'text-base',
   row: 'flex place-items-center space-x-2',
 }

@@ -441,6 +441,7 @@ export type Website = {
   tld?: boolean
   shutdown?: boolean // did the website complete the scan
   verified?: boolean // website verified
+  monitoringEnabled?: boolean // monitor website
   verificationCode?: string // txt record to verify dns
   mobile?: boolean
   ua?: string

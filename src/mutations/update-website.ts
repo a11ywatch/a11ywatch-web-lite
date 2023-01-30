@@ -15,6 +15,7 @@ export const UPDATE_WEBSITE = gql`
     $rules: [String]
     $runners: [String]
     $proxy: String
+    $monitoringEnabled: Boolean
   ) {
     updateWebsite(
       url: $url
@@ -30,6 +31,7 @@ export const UPDATE_WEBSITE = gql`
       rules: $rules
       runners: $runners
       proxy: $proxy
+      monitoringEnabled: $monitoringEnabled
     ) {
       code
       success
@@ -45,6 +47,7 @@ export const UPDATE_WEBSITE = gql`
         proxy
         standard
         pageInsights
+        monitoringEnabled
         insight {
           json
         }
