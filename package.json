@@ -1,6 +1,6 @@
 {
   "name": "@a11ywatch/web",
-  "version": "0.5.192",
+  "version": "0.5.194",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "dev:vercel": "NODE_OPTIONS='--inspect' vercel dev",
@@ -30,7 +30,7 @@
     "@stripe/react-stripe-js": "1.15.0",
     "@stripe/stripe-js": "1.45.0",
     "@vercel/og": "0.0.20",
-    "a11ywatch-web-wasm": "0.2.10",
+    "a11ywatch-web-wasm": "0.2.12",
     "apollo-cache-inmemory": "1.6.6",
     "apollo-client": "2.6.10",
     "apollo-link-context": "1.0.20",

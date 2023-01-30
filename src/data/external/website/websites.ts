@@ -271,9 +271,16 @@ export const useWebsiteData = (
       setTimeout(() => {
         feed?.insert_website({
           domain: newIssue.domain,
-          issues: newIssue.issues,
-          pageUrl: newIssue.pageUrl,
-          pageInsights: false,
+          issues: newIssue.issue,
+          pageUrl: newIssue.pageUrl || newIssue.url,
+          pageInsights: !!newIssue.pageInsights,
+          issuesInfo: null,
+          pageLoadTime: newIssue.pageLoadTime
+            ? {
+                duration: newIssue.pageLoadTime.duration,
+                durationFormated: newIssue.pageLoadTime.durationFormated,
+              }
+            : null,
         })
       })
     },
@@ -297,6 +304,8 @@ export const useWebsiteData = (
             pageInsights: true,
             domain: results.domain,
             issues: (feedItem && feedItem.issues) || [],
+            pageLoadTime: feedItem.pageLoadTime,
+            issuesInfo: feedItem.issueInfo,
           })
         }
 

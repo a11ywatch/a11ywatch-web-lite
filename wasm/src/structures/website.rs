@@ -42,4 +42,8 @@ pub struct PageIssue {
     pub issues: Option<Vec<Issue>>,
     #[serde(rename = "pageInsights")]
     pub page_insights: bool,
+    #[serde(rename = "issuesInfo")]
+    pub issues_info: Option<IssueInfo>,
+    #[serde(rename = "pageLoadTime")]
+    pub page_load_time: Option<PageLoadTime>,
 }
