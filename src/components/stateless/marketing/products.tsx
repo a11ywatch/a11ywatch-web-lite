@@ -21,7 +21,7 @@ const infoDetails = [
   },
   {
     title: 'Web App',
-    href: '/why-use',
+    href: '/why-us',
     subTitle: `Direct access and free to all on the internet. Login now to get started.`,
     Icon: GrCloudComputer,
   },
