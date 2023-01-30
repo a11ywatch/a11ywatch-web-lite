@@ -296,9 +296,9 @@ export function FormDialogWrapper({
         {buttonTitle}
         {icon ? (
           icon === 'add' ? (
-            <GrAdd className='grIcon' />
+            <GrAdd className='grIcon text-xs' />
           ) : (
-            <GrChapterAdd className='grIcon' />
+            <GrChapterAdd className='grIcon text-xs' />
           )
         ) : null}
       </Button>

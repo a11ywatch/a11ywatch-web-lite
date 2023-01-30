@@ -29,7 +29,8 @@ export type RightBarProps = {
   premiumEnabled?: boolean // used to detect prem atm
 }
 
-const btnStyles = 'gap-x-1.5 flex place-items-center'
+const btnStyles =
+  'gap-x-1.5 flex place-items-center hover:border-blue-800 hover:text-blue-800'
 
 export const RightBar = ({
   onWebsiteSort,
@@ -44,14 +45,16 @@ export const RightBar = ({
     <div className='flex flex-wrap gap-x-1 gap-y-1.5 text-sm'>
       <Button
         onClick={onQueryEvent}
-        className={`${btnStyles}${queryModalVisible ? ' border-blue-800' : ''}`}
+        className={`${btnStyles}${
+          queryModalVisible ? ' border-blue-800 text-blue-800' : ''
+        }`}
       >
         Scan
-        <GrDocumentTest className='grIcon' />
+        <GrDocumentTest className='grIcon text-xs' />
       </Button>
       {onScanAllEvent ? (
         <Button onClick={onScanAllEvent} className={btnStyles}>
-          Sync <GrConnect className='grIcon' />
+          Sync <GrConnect className='grIcon text-xs' />
         </Button>
       ) : null}
       {premiumEnabled ? (
@@ -72,7 +75,7 @@ export const RightBar = ({
             }`}
           >
             Sort
-            <GrSort className='grIcon' />
+            <GrSort className='grIcon text-xs' />
           </Button>
         </>
       ) : null}
