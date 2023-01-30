@@ -11,6 +11,11 @@ export const ISSUE_SUBSCRIPTION = gql`
         errorCount
         warningCount
         noticeCount
+        possibleIssuesFixedByCdn
+        issuesFixedByCdn
+        issueMeta {
+          skipContentIncluded
+        }
       }
       pageLoadTime {
         duration

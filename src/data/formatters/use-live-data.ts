@@ -26,25 +26,37 @@ export const useWebsiteLiveData = ({
       // todo: use data from issues Info
       if (issueArray) {
         issues.forEach((iss: any) => {
+          const pageInfo = iss?.issuesInfo
           const pageIssues = iss?.issues
+
           let currentErrors = 0
           let currentWarnings = 0
           let currentNotices = 0
 
-          pageIssues?.forEach((page: Issue) => {
-            if (page?.type === 'error') {
-              currentErrors++
-            }
-            if (page?.type === 'warning') {
-              currentWarnings++
-            }
-            if (page?.type === 'notice') {
-              currentNotices++
-            }
+          // direct object handling
+          if (pageInfo) {
+            currentErrors = pageInfo.errorCount
+            currentWarnings = pageInfo.warningCount
+            currentNotices = pageInfo.noticeCount
             errors += currentErrors
             warnings += currentWarnings
             notices += currentNotices
-          })
+          } else {
+            pageIssues?.forEach((page: Issue) => {
+              if (page?.type === 'error') {
+                currentErrors++
+              }
+              if (page?.type === 'warning') {
+                currentWarnings++
+              }
+              if (page?.type === 'notice') {
+                currentNotices++
+              }
+              errors += currentErrors
+              warnings += currentWarnings
+              notices += currentNotices
+            })
+          }
 
           liveData.push({
             pageUrl: iss.pageUrl,

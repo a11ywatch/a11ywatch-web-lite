@@ -267,6 +267,7 @@ export const useWebsiteData = (
   const onIssueSubscription = useCallback(
     ({ subscriptionData }: any) => {
       const newIssue = subscriptionData?.data?.issueAdded
+      const issuesInfo = newIssue?.issuesInfo
 
       setTimeout(() => {
         feed?.insert_website({
@@ -274,7 +275,21 @@ export const useWebsiteData = (
           issues: newIssue.issue,
           pageUrl: newIssue.pageUrl || newIssue.url,
           pageInsights: !!newIssue.pageInsights,
-          issuesInfo: null,
+          issuesInfo: issuesInfo
+            ? {
+                accessScore: issuesInfo.accessScore,
+                totalIssues: issuesInfo.totalIssues,
+                errorCount: issuesInfo.errorCount,
+                warningCount: issuesInfo.warningCount,
+                noticeCount: issuesInfo.noticeCount,
+                possibleIssuesFixedByCdn: issuesInfo.possibleIssuesFixedByCdn,
+                issuesFixedByCdn: issuesInfo.issuesFixedByCdn,
+                issueMeta: {
+                  skipContentIncluded:
+                    issuesInfo?.issueMeta?.skipContentIncluded,
+                },
+              }
+            : null,
           pageLoadTime: newIssue.pageLoadTime
             ? {
                 duration: newIssue.pageLoadTime.duration,
