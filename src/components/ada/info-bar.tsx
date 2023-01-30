@@ -44,7 +44,7 @@ export function InfoBarComponent({
       {download ? (
         <Link
           className={btnStyles}
-          href={`${apiRoute}/website?q=${website?.url}&download=true`}
+          href={`${apiRoute}/report?q=${website?.url}&download=true`}
         >
           Download
         </Link>

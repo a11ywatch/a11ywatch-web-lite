@@ -332,10 +332,7 @@ export function WebsiteCellDashboard({
           />
           <UserAgentBox ua={ua} url={url} />
           <StandardBox standard={standard} url={url} />
-          <MonitoringEnabledBox
-            enabled={monitoringEnabled}
-            url={url}
-          />
+          <MonitoringEnabledBox enabled={monitoringEnabled} url={url} />
           <RobotsBox robots={robots} url={url} />
           <MobileBox mobile={mobile} url={url} />
           <SubDomainsBox
