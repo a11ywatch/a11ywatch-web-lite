@@ -13,7 +13,7 @@ export const MenuList: FC<
       <Menu as='div' className='relative inline-block text-left'>
         <div>
           <Menu.Button
-            className={`justify-center rounded-full px-2 py-2 text-sm font-medium hover: hover:bg-opacity-30 hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+            className={`justify-center rounded-full px-2 py-2 text-sm font-medium hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             {settings ? (
               <GrSettingsOption title='more options' className={btnClassName} />

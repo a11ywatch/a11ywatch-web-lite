@@ -24,7 +24,7 @@ const AnalyticsWrapper = ({
   }, [visible, loaded, setLoaded])
 
   return (
-    <>
+    <li className='list-none'>
       <ListCellAnalyticsHeader
         url={pageUrl}
         totalIssues={totalIssues}
@@ -46,7 +46,7 @@ const AnalyticsWrapper = ({
           <Skeleton className='w-full h-30' />
         )}
       </div>
-    </>
+    </li>
   )
 }
 

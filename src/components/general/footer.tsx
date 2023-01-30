@@ -50,7 +50,7 @@ const SectionLinks = ({ title, blog }: { title: string; blog: boolean }) => {
   return (
     <div className={'flex-[0.2]'}>
       <h4 className={'font-semibold text-xl'}>{title}</h4>
-      <ul className={'list-style-none py-2'}>
+      <ul className={'list-none py-2'}>
         <NavLinks
           filterType={title.toLowerCase()}
           className={'leading-8'}

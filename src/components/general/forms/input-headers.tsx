@@ -13,7 +13,7 @@ export function InputHeadersComponent({
 }: any) {
   if (customHeader) {
     return (
-      <ul className='border-t list-style-none py-1'>
+      <ul className='border-t list-none py-1'>
         {customFields?.map((item: any, index: number) => {
           const inputKeyName = 'Key'
           const inputValueName = 'Value'
