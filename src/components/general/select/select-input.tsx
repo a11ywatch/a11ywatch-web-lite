@@ -41,7 +41,7 @@ export const WCAGSelectInput = ({
         value={standard}
         onChange={onStandardChange}
         className={classNames(
-          `text-sm border-0 m-0 hover:opacity-70 rounded py-1.5${
+          `text-xs border-0 m-0 hover:opacity-70 rounded py-1.5${
             spacing ? ' px-2' : ''
           }`,
           className

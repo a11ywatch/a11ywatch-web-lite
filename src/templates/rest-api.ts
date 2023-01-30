@@ -215,6 +215,11 @@ export const apiRoutes = [
             desc: 'Download the report to excel.',
             optional: true,
           },
+          csv: {
+            type: 'boolean',
+            desc: 'Download the report as csv.',
+            optional: true,
+          },
         },
         encodedParams: '',
         info: 'Get the last report ran for a web page url.',
