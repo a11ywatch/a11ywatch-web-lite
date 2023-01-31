@@ -125,13 +125,14 @@ export const LineChart = ({ title, data }: LineChartProps) => {
         <VictoryLabel
           x={12}
           y={18}
-          className={'fill-gray-700 font-bold'}
+          className={'fill-gray-700 font-bold dark:fill-gray-200'}
+          disableInlineStyles
           text={title ?? 'Website Analytics'}
         />
         <VictoryLabel
           x={12}
           y={33.5}
-          className={'fill-gray-600 text-sm'}
+          className={'fill-gray-600 text-sm dark:fill-gray-100'}
           style={{ fontSize: 10, fill: '#525252' }}
           text={headingText}
         />
@@ -140,7 +141,7 @@ export const LineChart = ({ title, data }: LineChartProps) => {
           x={420}
           y={20}
           style={styles.labelNumber}
-          className={'fill-gray-700 font-semibold'}
+          className={'fill-gray-700 font-semibold dark:fill-white'}
           text={`${ticks.length} websites`}
         />
         <VictoryLabel x={12} y={50} style={styles.labelOne} text={'Errors'} />
@@ -203,13 +204,13 @@ export const LineChart = ({ title, data }: LineChartProps) => {
           x={25}
           y={24}
           style={styles.title}
-          className={'fill-gray-700 font-semibold'}
+          className={'fill-gray-700 font-semibold dark:fill-gray-200'}
           text={title ?? 'Website Analytics'}
         />
         <VictoryLabel
           x={25}
           y={33.5}
-          className={'fill-gray-600 text-sm'}
+          className={'fill-gray-600 text-sm dark:fill-gray-100'}
           style={{ fontSize: 10, fill: '#525252' }}
           text={headingText}
         />
