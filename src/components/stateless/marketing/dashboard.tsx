@@ -15,9 +15,9 @@ export function MarketingDashboard(): ReactElement<any, any> | null {
         <div className='py-4'>
           <LazyMount>
             <ThemedImage
-              width={2162}
+              width={2164}
               className={'shadow border rounded'}
-              height={1118}
+              height={1121}
               quality={100}
               src={'/img/dashboard-example.png'}
               srcDark={'/img/dark_dashboard-example.png'}

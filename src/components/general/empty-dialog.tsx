@@ -6,15 +6,23 @@ export const EmptyDialogButton = ({
   buttonTitle,
   icon,
   buttonStyles,
+  iconButton,
 }: {
   icon?: boolean
-  buttonTitle?: string
+  buttonTitle?: string | JSX.Element
   buttonStyles?: string
+  iconButton?: boolean
 }) => {
   return (
-    <Button className={`bg-gray-200 dark:bg-inherit ${buttonStyles}`} disabled>
-      {buttonTitle}
-      {icon ? <GrChapterAdd className='grIcon' /> : null}
+    <Button
+      className={`bg-gray-200 dark:bg-inherit ${buttonStyles}`}
+      disabled
+      iconButton={iconButton}
+    >
+      <>
+        {buttonTitle}
+        {icon ? <GrChapterAdd className='grIcon' /> : null}
+      </>
     </Button>
   )
 }

@@ -24,10 +24,11 @@ import { SUPER_MODE } from '@app/configs'
 const domainList = [...dmList, 'none']
 
 interface FormDialogProps {
-  buttonTitle?: string
+  buttonTitle?: string | JSX.Element
   okPress?: (a: any) => void
   buttonStyles?: string
   icon?: boolean | 'add' // show btn with icon
+  iconButton?: boolean
 }
 
 interface InputHead {
@@ -58,6 +59,7 @@ export function FormDialogWrapper({
   okPress,
   buttonStyles = '',
   icon,
+  iconButton,
 }: FormDialogProps) {
   const { account } = useAuthContext()
   const activeSubscription = account?.activeSubscription || SUPER_MODE
@@ -299,7 +301,12 @@ export function FormDialogWrapper({
 
   return (
     <Fragment>
-      <Button onClick={handleClickOpen} className={`${buttonStyles}`}>
+      <Button
+        onClick={handleClickOpen}
+        className={buttonStyles}
+        iconButton={iconButton}
+        title={"Add website to monitor"}
+      >
         {buttonTitle}
         {icon ? (
           icon === 'add' ? (
