@@ -12,7 +12,7 @@ export const DrawerHead = () => {
   position: absolute;
   height: 100%;
   top: 0;
-  left: -1.3rem;
+  left: 4px;
   z-index: 0;
   transition: all 0 ease;
   opacity: .2;

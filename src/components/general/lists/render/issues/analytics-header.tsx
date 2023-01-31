@@ -41,17 +41,19 @@ const ListCellAnalyticsHeaderW = ({
       </Head>
       <div
         className={classNames(
-          'flex place-items-center text-xs md:text-sm row-bg relative',
+          'flex place-items-center text-xs md:text-sm row-bg relative hover:after:bg-transparent',
           dynamicErrorClassName
         )}
       >
         <button
-          className={`px-4 py-3 text-left place-items-center hover:opacity-80 flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate`}
+          className={`px-4 py-2 text-left place-items-center hover:opacity-80 flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate`}
           onClick={onTogglelist}
           aria-expanded={visible}
           aria-label={`Toggle section visible for ${url}`}
         >
-          {url}
+          {url.startsWith('https://')
+            ? url.replace('https://', '')
+            : url.replace('http://', '')}
         </button>
         <div className='grid grid-cols-2 gap-4 auto-cols-max pr-4'>
           <div className='text-right'>{warningCount}</div>

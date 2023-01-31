@@ -15,7 +15,6 @@ import {
   WarningsBox,
   SitemapBox,
   MonitoringEnabledBox,
-  // OnlineBox,
 } from './blocks'
 import { MobileBox } from './blocks/mobile'
 import { Issue, Website } from '@app/types'

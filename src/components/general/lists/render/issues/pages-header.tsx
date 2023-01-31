@@ -48,7 +48,7 @@ const ListCellPagesHeaderW = ({
   return (
     <li className='flex place-items-center text-xs md:text-sm'>
       <Link
-        className={`px-4 py-3 text-left place-items-center flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate text-xs md:text-sm hover:text-blue-800`}
+        className={`px-4 py-2 text-left place-items-center flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate text-xs md:text-sm hover:text-blue-800`}
         href={link}
       >
         {pathName}

@@ -68,7 +68,7 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
       <div className='flex flex-col place-content-around'>
         <div className='h-[450px]'>
           <InnerWrapper data={issueSource.length} loading={loading}>
-            <ul className='list-none space-y-0.5'>
+            <ul className='list-none space-y-0.5 py-0.5'>
               {issueList.map((page) => (
                 <AnalyticsList
                   key={page?._id || page.pageUrl}
