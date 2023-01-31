@@ -11,7 +11,9 @@ const PagesWrapper = ({
   pageInsights,
   online,
   pageLoadTime,
+  totalTTL,
 }: Pages & {
+  totalTTL: number
   open?: boolean
   small?: boolean
   singleRow?: boolean
@@ -21,6 +23,7 @@ const PagesWrapper = ({
     url={url || pageUrl}
     domain={domain as string}
     online={online}
+    totalTTL={totalTTL}
     pageInsights={pageInsights}
     duration={pageLoadTime?.duration}
     handleMainClick={handleMainClick}

@@ -30,8 +30,9 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
     () => (liveData?.length ? (liveData as Pages[]) : data) || [],
     [liveData, data]
   )
-  const issueList = useMemo(() => {
+  const [issueList, stats] = useMemo(() => {
     const items: Pages[] = []
+    let totalTTL = 0
 
     if (issueSource) {
       const base = (issueIndex + 1) * 10
@@ -41,11 +42,17 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
         if (!item) {
           break
         }
-        items.push(issueSource[i])
+        if (
+          item.pageLoadTime &&
+          typeof item.pageLoadTime.duration === 'number'
+        ) {
+          totalTTL += item.pageLoadTime.duration
+        }
+        items.push(item)
       }
     }
 
-    return items
+    return [items, { totalTTL }]
   }, [issueIndex, issueSource])
 
   const onPrevSelect = () => {
@@ -70,14 +77,18 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
       <div className='flex flex-col place-content-around'>
         <div className='h-[450px]'>
           <InnerWrapper data={issueSource.length} loading={loading}>
-            <ul className='list-none pr-4 space-y-0.5'>
+            <ul className='list-none pr-4 space-y-0.5 py-0.5'>
               {issueList.map((page) => (
                 <PagesList
                   key={page?._id ?? page.url ?? page.pageUrl}
-                  pageUrl={page.url}
                   open={defaultOpen}
                   handleMainClick={handleMainClick}
-                  {...page}
+                  pageInsights={page.pageInsights}
+                  pageLoadTime={page.pageLoadTime}
+                  online={page.online}
+                  domain={page.domain}
+                  url={page.url ?? page.pageUrl}
+                  totalTTL={stats.totalTTL}
                 />
               ))}
             </ul>
