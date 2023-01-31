@@ -32,13 +32,15 @@ const ListCellAnalyticsHeaderW = ({
   // return a small single row of the page and issues with a dropdown
   return (
     <>
-      <Head>
-        <style key={dynamicErrorClassName}>
-          {`.${dynamicErrorClassName}::after {
+      {totalErrors ? (
+        <Head>
+          <style key={dynamicErrorClassName}>
+            {`.${dynamicErrorClassName}::after {
           width: calc(${errorPercentage}% + 2.6rem);
         }`}
-        </style>
-      </Head>
+          </style>
+        </Head>
+      ) : null}
       <div
         className={classNames(
           'flex place-items-center text-xs md:text-sm row-bg relative hover:after:bg-transparent',

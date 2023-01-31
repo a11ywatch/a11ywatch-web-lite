@@ -305,7 +305,7 @@ export function FormDialogWrapper({
         onClick={handleClickOpen}
         className={buttonStyles}
         iconButton={iconButton}
-        title={"Add website to monitor"}
+        title={'Add website to monitor'}
       >
         {buttonTitle}
         {icon ? (

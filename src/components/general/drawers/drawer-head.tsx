@@ -17,6 +17,7 @@ export const DrawerHead = () => {
   transition: all 0 ease;
   opacity: .2;
   border-radius: 2px;
+  pointer-events: none;
 }
 @media (any-pointer: coarse) {
   ul a {
