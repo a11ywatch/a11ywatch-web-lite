@@ -9,15 +9,15 @@ export function MarketingDashboard(): ReactElement<any, any> | null {
     <SectionContainer>
       <div className='place-content-center place-items-center flex flex-col'>
         <Header3>All the details you need in one location</Header3>
-        <p className=''>
+        <p>
           Get inclusive reports across all your websites with real time updates.
         </p>
         <div className='py-4'>
           <LazyMount>
             <ThemedImage
-              width={1808}
+              width={2162}
               className={'shadow border rounded'}
-              height={972}
+              height={1118}
               quality={100}
               src={'/img/dashboard-example.png'}
               srcDark={'/img/dark_dashboard-example.png'}

@@ -1,6 +1,6 @@
 {
   "name": "@a11ywatch/web",
-  "version": "0.5.200",
+  "version": "0.5.201",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "dev:vercel": "NODE_OPTIONS='--inspect' vercel dev",
