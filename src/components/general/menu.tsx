@@ -16,9 +16,9 @@ export const MenuList: FC<
             className={`justify-center rounded-full px-2 py-2 text-sm font-medium hover:text-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             {settings ? (
-              <GrSettingsOption title='more options' className={btnClassName} />
+              <GrSettingsOption title='Site settings' className={btnClassName} />
             ) : more ? (
-              <GrMoreVertical title='more options' className={btnClassName} />
+              <GrMoreVertical title='Site settings' className={btnClassName} />
             ) : (
               <CgProfile className={btnClassName} title='profile menu' />
             )}
