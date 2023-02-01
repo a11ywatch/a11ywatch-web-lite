@@ -339,13 +339,13 @@ export function WebsiteCellDashboard({
             url={url}
             activeSubscription={account.activeSubscription}
           />
-          <SitemapBox
-            sitemap={sitemap}
+          <TLDBox
+            tld={tld}
             url={url}
             activeSubscription={account.activeSubscription}
           />
-          <TLDBox
-            tld={tld}
+          <SitemapBox
+            sitemap={sitemap}
             url={url}
             activeSubscription={account.activeSubscription}
           />
