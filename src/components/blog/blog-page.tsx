@@ -68,7 +68,7 @@ export const BlogPage: FC<PropsWithChildren<BlogPageProps>> = ({
         })}
       </Head>
       {header ? <NavBar title={'Blog'} /> : null}
-      <main className='blog-main' id='#main-content'>
+      <main className='blog-main' id='main-content'>
         {html ? parser(html) : ''}
       </main>
       {footer ? <Footer blog /> : null}
