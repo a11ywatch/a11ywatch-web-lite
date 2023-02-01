@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import {
   PageTitle,
-  Drawer,
   PaymentPlans,
   Spacer,
   AuthMenu,
@@ -58,7 +57,7 @@ function WebActions({ name }: PageProps) {
   const { account } = useAuthContext()
 
   return (
-    <Drawer>
+    <main className='px-4 py-2 mx-auto container' id='main-content'>
       <PageTitle
         title={account.activeSubscription ? name : 'Upgrade Required'}
         rightButton={<AuthMenu authenticated={account.authed} settings />}
@@ -69,7 +68,7 @@ function WebActions({ name }: PageProps) {
       ) : (
         <PaymentPlans pricingPage />
       )}
-    </Drawer>
+    </main>
   )
 }
 

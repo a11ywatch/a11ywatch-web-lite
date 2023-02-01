@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   className = '',
-  disabled,
+  disabled = undefined,
   type = 'button',
   style,
   iconButton,

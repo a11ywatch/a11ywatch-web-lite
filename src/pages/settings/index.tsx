@@ -120,7 +120,7 @@ function Settings() {
   }
 
   return (
-    <main className='px-4 py-2 mx-auto container' id="main-content">
+    <main className='px-4 py-2 mx-auto container' id='main-content'>
       <PageTitle
         title={'Settings'}
         rightButton={<AuthMenu authenticated={account.authed} settings />}
