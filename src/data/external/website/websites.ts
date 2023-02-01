@@ -479,7 +479,7 @@ export const useWebsiteData = (
         }
       }
     } catch (e) {
-      console.error(e)
+      console.error(error)
     }
   }
 

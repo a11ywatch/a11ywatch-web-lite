@@ -4,6 +4,7 @@ import { useUserData } from '@app/data'
 import { ConfirmEmail } from '../../alerts'
 import { DrawerHead } from './drawer-head'
 import { IssueFeed } from '@app/components/feed'
+import { SnackBar } from '../snack-bar'
 
 const DynamicModal = dynamic(
   () => import('../../modal/dynamic').then((mod) => mod.DynamicModal),
@@ -20,29 +21,33 @@ const MiniPlayer = dynamic(
 export const DrawerW: FC<PropsWithChildren<{}>> = ({ children }) => {
   const { data: dataSourceMap, sendConfirmEmail } = useUserData()
   const user = dataSourceMap?.user
+  const emailConfirmationVisible =
+    user && !!user.loggedIn && !user.emailConfirmed
 
   return (
     <>
       <DrawerHead />
-      <main
-        className={'flex overflow-x-inherit md:overflow-x-hidden'}
-        id='main-content'
-      >
-        <div className={'flex-1 overflow-auto'}>
-          <div
-            className={'px-3 md:px-4 pb-28 md:pb-16 overflow-auto max-h-screen'}
-          >
-            {children}
+      <main id='main-content'>
+        <div className='flex overflow-x-inherit md:overflow-x-hidden'>
+          <div className={'flex-1 overflow-auto'}>
+            <div
+              className={
+                'px-3 md:px-4 pb-28 md:pb-16 overflow-auto max-h-screen'
+              }
+            >
+              {children}
+            </div>
+            <ConfirmEmail
+              sendEmail={sendConfirmEmail}
+              visible={emailConfirmationVisible}
+            />
           </div>
-          <ConfirmEmail
-            sendEmail={sendConfirmEmail}
-            visible={!!user?.loggedIn && !user?.emailConfirmed}
-          />
+          <IssueFeed />
         </div>
-        <IssueFeed />
       </main>
       <DynamicModal />
       <MiniPlayer />
+      <SnackBar topLevel adjustPlacement={emailConfirmationVisible} />
     </>
   )
 }

@@ -10,6 +10,7 @@ import { Button } from './buttons'
 interface SnackProps {
   topLevel?: boolean
   snackID?: string
+  adjustPlacement?: boolean // adjust the position to avoid overlaps
 }
 
 // close the snackbar
@@ -25,11 +26,16 @@ const handleClose = (
   AppManager.closeSnack()
 }
 
-const SnackBarComponent = ({ topLevel, snackID }: SnackProps) => {
-  // todo: pass in email-confirmation to position snack bottom
+const SnackBarComponent = ({
+  topLevel,
+  snackID,
+  adjustPlacement,
+}: SnackProps) => {
   const snackStyle =
     !!AppManager.snackbar.open && !(topLevel && AppManager.modalActive)
-      ? 'transition transform fixed z-100 bottom-0 inset-x-0 pb-2 sm:pb-5 scale-100 translate-y-0 ease-out duration-500 z-30'
+      ? `transition transform fixed z-100 ${
+          adjustPlacement ? 'bottom-52' : 'bottom-0'
+        } inset-x-0 pb-2 sm:pb-5 scale-100 translate-y-0 ease-out duration-500 z-30`
       : 'hidden'
   const id = snackID ?? 'message-id'
 

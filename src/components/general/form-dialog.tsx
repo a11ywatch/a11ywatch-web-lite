@@ -218,13 +218,9 @@ export function FormDialogWrapper({
           'success',
           true
         )
-        try {
-          await addWebsite({
-            variables: params,
-          })
-        } catch (e) {
-          console.error(e)
-        }
+        await addWebsite({
+          variables: params,
+        })
       }
     },
     [

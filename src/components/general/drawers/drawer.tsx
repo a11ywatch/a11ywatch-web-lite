@@ -37,25 +37,25 @@ export function NavigationBar({ title = '', authenticated }: any) {
 export const DrawerW: FC<PropsWithChildren> = ({ children }) => {
   const { data: dataSourceMap, sendConfirmEmail } = useUserData()
   const user = dataSourceMap?.user
+  const emailConfirmationVisible =
+    user && !!user.loggedIn && !user.emailConfirmed
 
   return (
     <>
       <DrawerHead />
-      <div className={'flex overflow-x-inherit md:overflow-x-hidden'}>
-        <main className={'flex-1 overflow-auto'} id='main-content'>
-          <div
-            className={
-              'px-3 pt-4 pb-20 scrollbar overflow-auto max-h-screen md:px-4 md:pb-0'
-            }
-          >
-            {children}
-          </div>
-          <ConfirmEmail
-            sendEmail={sendConfirmEmail}
-            visible={!!user?.loggedIn && !user?.emailConfirmed}
-          />
-        </main>
-      </div>
+      <main className={'flex-1 overflow-auto relative'} id='main-content'>
+        <div
+          className={
+            'px-3 pt-4 pb-20 scrollbar overflow-auto max-h-screen md:px-4 md:pb-0'
+          }
+        >
+          {children}
+        </div>
+        <ConfirmEmail
+          sendEmail={sendConfirmEmail}
+          visible={emailConfirmationVisible}
+        />
+      </main>
       <DynamicModal />
       <MiniPlayer />
     </>

@@ -187,7 +187,9 @@ export default function Layout({ Component, pageProps }: InnerApp) {
       </Head>
       <SkipContent />
       <LayoutWrapper Component={Component} pageProps={pageProps} />
-      {pathName === 'blog' ? null : <SnackBar topLevel />}
+      {pathName === 'blog' || pathName === 'dashboard' ? null : (
+        <SnackBar topLevel />
+      )}
     </>
   )
 }
