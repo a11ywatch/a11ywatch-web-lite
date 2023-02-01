@@ -51,6 +51,7 @@ export const RightBar = ({
         }`}
         iconButton
         title='Perform direct scans against urls'
+        border
       >
         <span className='sr-only'>Scan</span>
         <GrDocumentTest className='grIcon text-xs' />
@@ -61,6 +62,7 @@ export const RightBar = ({
           className={btnStyles}
           iconButton
           title='Sync all websites'
+          border
         >
           <span className='sr-only'>Sync</span>
           <GrConnect className='grIcon text-xs' />
@@ -73,6 +75,7 @@ export const RightBar = ({
             className={btnStyles}
             iconButton
             disabled={!premiumEnabled}
+            border
             title={'View all website analytics'}
           >
             <span className='sr-only'>Analytics</span>
@@ -83,6 +86,7 @@ export const RightBar = ({
             onClick={onWebsiteSort}
             iconButton
             title={'Sort websites'}
+            border
             className={`${btnStyles}${
               sortModalVisible ? ' border-blue-800' : ''
             }`}

@@ -12,6 +12,7 @@ type ButtonProps = PropsWithChildren<{
   outline?: boolean // display outline styles
   title?: string // button title hover
   round?: boolean // simple bump to border-radius
+  border?: boolean
 }>
 
 export const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
   iconButton,
   outline,
   round,
+  border,
   ...extra
 }) => {
   return (
@@ -33,13 +35,14 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       disabled={disabled}
       className={classNames(
-        'border min-w-[44px] hover:opacity-80',
+        'min-w-[44px] hover:opacity-80',
         iconButton
           ? 'text-lg py-3 px-3 rounded-3xl place-content-center place-items-center flex md:text-[1.15rem]'
-          : 'px-2 py-1 md:px-4',
+          : 'px-2 py-1 md:px-4 border',
         outline ? outlineStyles : '',
         className,
-        round ? 'rounded' : 'rounded-2xl'
+        round ? 'rounded' : 'rounded-2xl',
+        border ? 'border' : ''
       )}
       onClick={onClick}
     >

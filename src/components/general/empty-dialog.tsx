@@ -17,6 +17,7 @@ export const EmptyDialogButton = ({
     <Button
       className={`bg-gray-200 dark:bg-inherit ${buttonStyles}`}
       disabled
+      border
       iconButton={iconButton}
     >
       <>
