@@ -3,7 +3,7 @@ import { GrChapterAdd } from 'react-icons/gr'
 import { Button } from './buttons'
 
 export const EmptyDialogButton = ({
-  buttonTitle,
+  buttonTitle = 'Subscribe',
   icon,
   buttonStyles,
   iconButton,
@@ -15,9 +15,9 @@ export const EmptyDialogButton = ({
 }) => {
   return (
     <Button
-      className={`bg-gray-200 dark:bg-inherit ${buttonStyles}`}
-      disabled
       border
+      disabled
+      className={`bg-gray-200 dark:bg-inherit ${buttonStyles}`}
       iconButton={iconButton}
     >
       <>

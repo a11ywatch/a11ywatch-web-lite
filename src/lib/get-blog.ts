@@ -252,7 +252,7 @@ export const getBlogPage = async (
               .blog-main .entry-date.published, .blog-date {
                 color: rgba(117, 117, 117, 1);
               }
-              .blog-main main a {
+              .blog-main a {
                 color: rgb(37, 99, 235);
                 text-decoration: none;
                 padding: 0.2em;

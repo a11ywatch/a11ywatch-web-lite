@@ -113,14 +113,14 @@ function CreateCalculator({ name }: PageProps) {
       </div>
       <Header2>Workloads that are out of this world.</Header2>
       <p>
-        The enterprise setup is ideal for users that have over 100 domains that
+        The enterprise setup is ideal for users that have over 50 domains that
         need to stay accessible at all times.
       </p>
       <Header3>Go beyond limits</Header3>
       <p>
         With enterprise plans comes the abilility to get custom workflows. Build
         your product on top of our infrastructure to extend the possibilities of
-        our system.
+        your system.
       </p>
     </MarketingDrawer>
   )

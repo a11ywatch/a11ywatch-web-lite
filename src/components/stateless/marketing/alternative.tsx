@@ -13,9 +13,9 @@ export function MarketingAlternatives() {
             <Header3 className='max-w-none'>
               Pick the best Wave alternative
             </Header3>
-            <p className='text-sm md:text-xl font-medium'>
-              Start {companyName} now to get fast and affordable inclusion
-              monitoring
+            <p className='text-sm md:text-lg font-medium'>
+              Start {companyName} now to get fast and affordable automated web
+              accessibility testing & monitoring
             </p>
           </div>
           <div className='flex flex-1 md:place-content-end md:pr-40'>

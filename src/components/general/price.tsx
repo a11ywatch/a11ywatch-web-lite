@@ -213,7 +213,7 @@ export function PaymentPlans({
       </div>
 
       <div className='text-center py-4 text-sm'>
-        Need more? We can easily handle thousands of scans per minute,{' '}
+        Need more? We can easily handle millions of scans per minute,{' '}
         <a href='mailto:support@a11ywatch.com' className='underline'>
           get in touch
         </a>{' '}

@@ -69,7 +69,11 @@ export const CoreVitalsView = ({
         </ul>
         <form onSubmit={onSubmitLighthouse}>
           <div>
+            <label htmlFor='pagespeed-code' className='sr-only'>
+              PageSpeed Code
+            </label>
             <input
+              id={'pagespeed-code'}
               onChange={onSetLighthouseCode}
               placeholder='Enter the code'
               className='p-3 border rounded rounded-r-none'

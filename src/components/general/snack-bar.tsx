@@ -60,7 +60,10 @@ const SnackBarComponent = ({
             {AppManager.snackbar.title}
           </div>
           {AppManager.snackbar.showBtn ? (
-            <Link className={'font-medium text-[#3b82f6]'} href='/payments'>
+            <Link
+              className={'font-medium text-xs md:text-sm text-[#3b82f6]'}
+              href='/payments'
+            >
               UPGRADE ACCOUNT
             </Link>
           ) : null}

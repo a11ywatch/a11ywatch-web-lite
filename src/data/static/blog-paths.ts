@@ -8,4 +8,5 @@ export const blogPaths = [
   '/blog/web-accessibility-monitoring',
   '/blog/web-accessibility-checker',
   '/blog/version-your-proto-definitions-for-stablity',
+  '/blog/fast-efficient-and-accurate-web-accessibility-automation-tool',
 ]

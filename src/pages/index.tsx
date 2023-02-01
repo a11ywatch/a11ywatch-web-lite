@@ -12,6 +12,7 @@ import { MarketingDashboard } from '@app/components/stateless/marketing/dashboar
 import { MarketingBottomTemporaryDrawer } from '@app/components/modal'
 import { companyName } from '@app/configs'
 import { MarketingBenefits } from '@app/components/stateless/marketing/benefits'
+import { MarketingCli } from '@app/components/stateless/marketing/cli-usage'
 
 function Index() {
   return (
@@ -23,6 +24,7 @@ function Index() {
         <FeaturesList />
         <MarketingDashboard />
         <MarketingBenefits />
+        <MarketingCli />
         <MarketingTrustBy />
       </MarketingDrawer>
       <MarketingBottomTemporaryDrawer />

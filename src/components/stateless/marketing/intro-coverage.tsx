@@ -11,7 +11,7 @@ import { companyName } from '@app/configs'
 const infoDetails = [
   {
     title: 'Concurrent Website Testing',
-    subTitle: `Get reports for thousands of pages in seconds with real browsers for WCAG A-AAA, Section508, and beyond. Get spot on results with up to 63% of all web accessibility issues handled with recommendations and auto code fixes.`,
+    subTitle: `Get reports for thousands of pages in seconds with real browsers for WCAG A-AAA, Section508, and beyond. Get spot on results with up to 63% of all web accessibility issues handled with recommendations.`,
   },
   {
     title: 'Lightning Fast',
@@ -33,10 +33,12 @@ const previewStyles = {
   backgroundColor: 'rgb(160, 160, 160)',
 }
 
-export function MarketingCli(): ReactElement<any, any> | null {
+export function IntroCoverage(): ReactElement<any, any> | null {
   const [sampleVisible, setSample] = useState<boolean>(false)
 
-  const toggleSample = () => setSample((x) => !x)
+  const toggleSample = () => {
+    setSample((x) => !x)
+  }
 
   return (
     <SectionContainer>
@@ -61,8 +63,8 @@ export function MarketingCli(): ReactElement<any, any> | null {
             </button>
           </div>
           <p className='text-lg pb-4 leading-10'>
-            Perform audits with {companyName} on any machine with the Command
-            Line Interface. Install the CLI in shell using{' '}
+            Perform audits with {companyName} on any machine using the Command
+            Line Interface. Install the CLI in shell using the command{' '}
             <code className='text-gray-700  bg-gray-300 p-1'>
               npm i a11ywatch-cli -g
             </code>
@@ -95,11 +97,11 @@ export function MarketingCli(): ReactElement<any, any> | null {
                     </div>
                     <div className='text-gray-200'>
                       <span className='text-gray-300 select-none'>~ </span>{' '}
-                      {`a11ywatch --set-token $ACCESS_TOKEN`}
+                      {`a11ywatch build && a11ywatch start`}
                     </div>
                     <div className='text-gray-300'>
                       <span className='text-gray-400 select-none'>~ </span>{' '}
-                      a11ywatch crawl --external -d -u a11ywatch.com
+                      a11ywatch crawl -d -u a11ywatch.com
                       <span
                         style={previewStyles}
                         className={'w-[4px] md:w-[8px]'}
