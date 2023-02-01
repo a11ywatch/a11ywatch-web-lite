@@ -36,7 +36,7 @@ function Features({ name }: PageProps) {
           <div className={paper}>
             <Section>
               <div>
-                <Header3>{companyName} Web Accessibility Monitoring</Header3>
+                <Header3>Accurate and Fast Web Accessibility Audits</Header3>
                 <FeatureHeading>
                   Our web accessibility insight reporter and monitor scans for
                   problems with recommended solutions that are tuned for any

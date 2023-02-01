@@ -34,10 +34,10 @@ export const IntroGraph: FC = () => {
           <li className='flex flex-1 px-2 h-full'>
             <div className='flex flex-col h-full place-content-end'>
               <div className='py-1' aria-hidden='true'>
-                <div className='text-base font-semibold'>100%</div>
+                <div className='text-base font-semibold'>10,000%+</div>
               </div>
               <div className='px-2 bg-black dark:bg-white h-full w-20 rounded-t border-4 border-b-0 border-gray-700'>
-                <div className='sr-only'>100% Open Source</div>
+                <div className='sr-only'>10,000 - 100,000%+ more efficient</div>
               </div>
             </div>
           </li>
@@ -45,7 +45,7 @@ export const IntroGraph: FC = () => {
         <div className='grid grid-cols-3 py-2 text-center px-1'>
           <div className='text-sm font-medium'>Audits per minute</div>
           <div className='text-sm font-medium'>Accessibility coverage</div>
-          <div className='text-sm font-medium'>Percent open source</div>
+          <div className='text-sm font-medium'>Cost Savings</div>
         </div>
       </div>
     </div>

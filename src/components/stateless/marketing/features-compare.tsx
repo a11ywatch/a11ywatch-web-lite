@@ -220,7 +220,7 @@ function Feature() {
             <TableRow
               rows={[
                 'WCAG',
-                '50%-61%',
+                '50%-63%',
                 '40%-57% uses Axe or HTML_CodeSniffer',
                 '57% Axe',
               ]}

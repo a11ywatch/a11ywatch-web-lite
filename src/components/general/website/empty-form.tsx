@@ -68,7 +68,7 @@ const EmptyWebsiteFormComponent: FC<EmptyWebsiteProps> = ({
           }
         />
       )}
-      <div className={'flex space-items-center space-x-10 py-12'}>
+      <div className={'flex space-items-center space-x-10 py-12 px-4'}>
         <ul
           className={'w-full text-left space-y-2 md:w-full lg:w-1/2 xl:pr-12'}
         >

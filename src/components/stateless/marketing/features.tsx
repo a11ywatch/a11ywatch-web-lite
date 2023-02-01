@@ -9,7 +9,7 @@ import {
   GrCloud,
   GrCode,
   GrCompare,
-  GrGithub,
+  GrMoney,
   GrNotification,
   GrTime,
   GrTip,
@@ -45,7 +45,7 @@ const RenderIcon = ({ index, ...props }: any): any =>
           FeatureIcon = GrAggregate
           break
         case 7:
-          FeatureIcon = GrGithub
+          FeatureIcon = GrMoney
           break
         case 8:
           FeatureIcon = GrTime

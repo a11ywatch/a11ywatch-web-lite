@@ -45,12 +45,6 @@ export const Routes = [
   },
   {
     nav: false,
-    href: 'https://github.com/A11yWatch/a11ywatch/tree/main/cli',
-    name: 'Command-Line',
-    type: 'resources',
-  },
-  {
-    nav: false,
     href: 'https://discord.com/invite/tmCzndrmMm',
     name: 'Discord',
     type: 'resources',

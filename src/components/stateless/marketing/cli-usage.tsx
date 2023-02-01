@@ -10,13 +10,8 @@ import { companyName } from '@app/configs'
 
 const infoDetails = [
   {
-    title: 'Local, CI, or Remote',
-    subTitle:
-      'Want to host A11yWatch on your own? In one command start the project with docker or directly on the machine. Tear up or down the project in seconds with our slim binary builds or via Terraform.',
-  },
-  {
     title: 'Concurrent Website Testing',
-    subTitle: `Get reports for thousands of pages in seconds with real browsers for WCAGA-AAA, Section508, and beyond. Get spot on results with up to 61% of all web accessibility issues handled with recommendations.`,
+    subTitle: `Get reports for thousands of pages in seconds with real browsers for WCAGA-AAA, Section508, and beyond. Get spot on results with up to 63% of all web accessibility issues handled with recommendations.`,
   },
   {
     title: 'Lightning Fast',
@@ -50,7 +45,7 @@ export function MarketingCli(): ReactElement<any, any> | null {
       <div className='py-1'>
         <div className='ring-1 shadow-xl ring-[#0E1116] ring-offset-8 ring-offset-gray-600 py-4 px-4 rounded'>
           <div className='flex space-x-2 place-items-center'>
-            <Header3>{companyName} Web Accessibility CLI and API</Header3>
+            <Header3>{companyName} Web Accessibility CLI</Header3>
             <button
               title={
                 sampleVisible
@@ -68,8 +63,8 @@ export function MarketingCli(): ReactElement<any, any> | null {
             </button>
           </div>
           <p className='text-lg pb-4 leading-10'>
-            Run {companyName} on any machine using the Command Line Interface.
-            Install the CLI in shell using the command{' '}
+            Perform audits using {companyName} on any machine using the Command
+            Line Interface. Install the CLI in shell using the command{' '}
             <code className='text-gray-700  bg-gray-300 p-1'>
               npm i a11ywatch-cli -g
             </code>
@@ -78,7 +73,7 @@ export function MarketingCli(): ReactElement<any, any> | null {
           <div
             className={`flex flex-wrap gap-x-5 space-y-4 place-items-center`}
           >
-            <div className='flex flex-1 sm:w-1/3 h-60 place-items-center'>
+            <div className='flex flex-1 sm:w-1/3 h-[32rem] place-items-center'>
               <div className={`${sampleVisible ? 'block' : 'hidden'}`}>
                 <Image
                   src={'/img/a11ywatch_cli.gif'}

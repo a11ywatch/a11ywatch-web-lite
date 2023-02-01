@@ -74,9 +74,9 @@ export const generateStrings = ({
       },
       {
         id: 7,
-        title: '100% Open-Source',
+        title: 'Efficient',
         detail:
-          'Every line of code to power this project is fully open-source and available on GitHub. Easily fork the project and run on any server with bare metal or docker.',
+          'If you are performing any type of accessibility testing using our service will save you between 10,000% - 100,000%+ on cost by using our platform.',
       },
       {
         id: 8,
