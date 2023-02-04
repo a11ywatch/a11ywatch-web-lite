@@ -240,7 +240,7 @@ export function WebsiteCellDashboard({
 
   return (
     <li>
-      <div className={`${index ? 'border-t' : ''}`}>
+      <div className={index ? 'border-t' : undefined}>
         <div className='border-b'>
           <div className='flex gap-x-1 place-items-center place-content-between pr-3'>
             <div className='flex gap-2 md:gap-4 place-items-center flex-wrap py-2 px-2'>

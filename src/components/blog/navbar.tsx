@@ -17,10 +17,11 @@ export const NavBar: FC<any> = ({ title = strings.appName }) => {
     <header>
       <nav className='bg-[#0E1116] z-10 px-2 py-1 md:py-3 md:px-4'>
         <div
-          className='flex content-center place-items-center text-white md:space-x-2 font-semibold'
+          className='flex content-center place-items-center text-white space-x-2 font-semibold'
           style={{ display: 'flex' }}
         >
           <Link href={MAIN_HREF}>
+            <span className='sr-only'>A11yWatch Logo</span>
             <Logo
               className='block invert dark:invert-0 p-0 m-0'
               width={24}
@@ -28,8 +29,11 @@ export const NavBar: FC<any> = ({ title = strings.appName }) => {
             />
           </Link>
           <span>/</span>
-          <Link className={`text-normal`} href={BLOG_HREF}>
-            <div className='pl-1 text-white'>{title}</div>
+          <Link
+            className={`text-normal text-white md:text-base`}
+            href={BLOG_HREF}
+          >
+            {title}
           </Link>
         </div>
       </nav>

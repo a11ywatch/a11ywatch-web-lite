@@ -75,7 +75,7 @@ export const FeedHeadingComponent = ({
             <GrSync className={'text-base grIcon'} />
           </button>
         ) : null}
-        <button
+        {totalIssues ? <button
           onClick={onToggle}
           className='px-5 py-1 hover:opacity-70'
           title={`Toggle issues ${
@@ -87,7 +87,7 @@ export const FeedHeadingComponent = ({
           ) : (
             <GrUp className={'text-base grIcon'} />
           )}
-        </button>
+        </button> : null}
       </div>
     </div>
   )

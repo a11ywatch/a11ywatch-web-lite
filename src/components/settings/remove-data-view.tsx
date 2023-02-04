@@ -38,7 +38,9 @@ export const RemoveDataView = ({
         </div>
         <Button
           onClick={onDeleteAccountPress}
-          className={'flex gap-x-2 place-items-center text-red-800'}
+          className={
+            'flex gap-x-2 place-items-center text-red-800 border-red-800'
+          }
         >
           Delete Account
           <GrTrash className='grIcon' />

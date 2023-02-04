@@ -11,7 +11,7 @@ import { companyName } from '@app/configs'
 const infoDetails = [
   {
     title: 'Concurrent Website Testing',
-    subTitle: `Get reports for thousands of pages in seconds with real browsers for WCAG A-AAA, Section508, and beyond. Get spot on results with up to 63% of all web accessibility issues handled with recommendations and auto code fixes.`,
+    subTitle: `Get reports for thousands to millions of pages in seconds with real browsers for WCAG A-AAA, Section508, and beyond. Get spot on results with up to 63% of all web accessibility issues handled with recommendations and auto code fixes.`,
   },
   {
     title: 'Lightning Fast',
@@ -78,7 +78,7 @@ export function MarketingCli(): ReactElement<any, any> | null {
                   height={494}
                   width={717}
                   alt={`${companyName} CLI running the command: 'a11ywatch crawl --url https://a11ywatch.com -d -n -s > results.json' with the output 27/27 urls passing the report almost instantly.`}
-                  className={'h-auto w-auto rounded'}
+                  className={'h-auto w-auto rounded bg-inherit'}
                   quality={70}
                 />
               </div>
@@ -95,11 +95,11 @@ export function MarketingCli(): ReactElement<any, any> | null {
                     </div>
                     <div className='text-gray-200'>
                       <span className='text-gray-300 select-none'>~ </span>{' '}
-                      {`a11ywatch --set-token $ACCESS_TOKEN`}
+                      {`a11ywatch -s $TOKEN`}
                     </div>
                     <div className='text-gray-300'>
                       <span className='text-gray-400 select-none'>~ </span>{' '}
-                      a11ywatch crawl --external -d -u a11ywatch.com
+                      a11ywatch crawl -e -d -u a11ywatch.com
                       <span
                         style={previewStyles}
                         className={'w-[4px] md:w-[8px]'}

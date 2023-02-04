@@ -23,12 +23,12 @@ export const NotificationSettings = ({
 }: NotificationSettingsProps) => {
   return (
     <div className='py-2 gap-y-2 border-t'>
-      <Header3 className='sr-only'>Notifications</Header3>
+      <Header3 className='sr-only'>Notification Settings</Header3>
       <div className='flex gap-x-2 place-items-center'>
         <FormControl
           htmlFor='alerts-btn'
-          visible
           className={`font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl py-3 sm:leading-[1.1em] ${settingsHeadingStyle}`}
+          visible
         >
           Notifications
         </FormControl>
@@ -36,7 +36,9 @@ export const NotificationSettings = ({
           id='alerts-btn'
           checked={alertEnabled}
           onChange={onAlertToggle}
-        />
+        >
+          Notifications
+        </SwitchInput>
       </div>
       <WeekSelect
         confirmDates={onFilterEmailDates}

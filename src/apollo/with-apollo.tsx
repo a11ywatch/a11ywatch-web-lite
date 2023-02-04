@@ -13,6 +13,7 @@ import { UserManager, AppManager } from '@app/managers'
 import { AppConfig } from '@app/configs/app-config'
 import { resolvers } from './resolvers'
 import { WebSocketLink } from './ws-link'
+import { upgradeRequired } from '@app/managers/app'
 
 const createLink = (): ApolloLink => {
   const httpLink = createHttpLink({
@@ -65,7 +66,7 @@ const createLink = (): ApolloLink => {
         ) {
           return
         }
-        AppManager.toggleSnack(true, errors, 'error')
+        AppManager.toggleSnack(true, errors, 'error',  upgradeRequired(errors))
       }
 
       if (networkError) {

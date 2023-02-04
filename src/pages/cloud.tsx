@@ -61,10 +61,10 @@ function Cloud({ name }: PageProps) {
           </h3>
           <p>
             We have gRPC stream integrations that can take your system to the
-            next level of speed and efficiency. Save thoasands to millions of
-            dollars by taking the steps needed to use the right tools for
-            testing on the cloud. Our project made several tools that brought
-            new capabilities to the OSS net.{' '}
+            next level of speed and efficiency. Save thousands of dollars by
+            taking the steps needed to use the right tools for testing on the
+            cloud. Our project made several tools that brought new capabilities
+            to the OSS net.{' '}
             <Link
               className='underline text-blue-800'
               href={'mailto:support@a11ywatch.com'}

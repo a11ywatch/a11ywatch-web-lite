@@ -65,15 +65,16 @@ const TableRow = ({ rows }: TableRowProps) => {
 function Feature() {
   return (
     <>
-      <div className='py-2'>
-        <h3 className='py-2 border-t border-b font-bold text-lg'>
-          Accessibility Features
-        </h3>
-      </div>
+      <h3 className='py-4 border-t border-b font-bold text-lg'>
+        Accessibility Features
+      </h3>
 
       <div className='overflow-auto border rounded'>
         <table className='min-w-full table-auto'>
           <TableHeading title={'Feature'} />
+          <caption style={{ captionSide: 'bottom' }} className={'p-2'}>
+            A11yWatch feature comparison
+          </caption>
           <tbody>
             <TableRow
               rows={['Live web accessibility testing', 'true', 'true', 'true']}
@@ -85,7 +86,6 @@ function Feature() {
               rows={['Command Line Interface', 'true', 'maybe', 'maybe']}
             />
             <TableRow rows={['Monitoring', 'true', 'true', 'maybe']} />
-            <TableRow rows={['Cross site testing', 'true', 'maybe', 'maybe']} />
             <TableRow
               rows={['Custom actions to run on pages', 'true', 'true', 'false']}
             />
@@ -96,6 +96,9 @@ function Feature() {
                 'true',
                 'false',
               ]}
+            />
+            <TableRow
+              rows={['Secure proxy support', 'true', 'false', 'false']}
             />
             <TableRow
               rows={['Dynamic url handling', 'true', 'false', 'false']}
@@ -143,21 +146,22 @@ function Feature() {
         </table>
       </div>
 
-      <div className='py-6'>
-        <div className='py-2 border-t border-b'>
-          <h3 className='font-bold text-lg'>Accessibility Performance</h3>
-          <p>All benches are done on 8gb linux Github Action containers</p>
-        </div>
+      <div className='py-8 border-t border-b'>
+        <h3 className='font-bold text-lg'>Accessibility Performance</h3>
+        <p>All benches are done on 8gb linux Github Action containers</p>
       </div>
 
       <div className='overflow-auto border rounded'>
         <table className='min-w-full table-auto'>
+          <caption style={{ captionSide: 'bottom' }} className={'p-2'}>
+            A11yWatch performance and cost comparison
+          </caption>
           <TableHeading title={'Performance and Costs'} />
           <tbody>
             <TableRow
               rows={[
                 'Average pages tested per 10$ spent',
-                '8,000-15,000 daily',
+                '250,000',
                 '100',
                 '10-75?',
               ]}
@@ -173,7 +177,7 @@ function Feature() {
             <TableRow
               rows={[
                 'https://www.hbo.com - 7,500 pages',
-                '3 mins',
+                '2-3 mins',
                 '55 hours+',
                 '72 hours+',
               ]}
@@ -181,40 +185,41 @@ function Feature() {
             <TableRow
               rows={[
                 'https://a11ywatch.com - 28 pages',
-                '0.1s',
-                '1 min',
-                '2 mins',
+                '0.1s-1s',
+                '1-2 min',
+                '2-3 mins',
               ]}
             />
           </tbody>
         </table>
-
-        <div className='py-4 px-6'>
-          <h4 className='text-lg font-bold'>Reasons why A11yWatch is faster</h4>
-
-          <p>
-            Some of the reasons A11yWatch and Wave run faster than Deque is due
-            to the protocol of choice to control the browser. A11yWatch and Wave
-            use the devtools protocol while Deque uses WebDriver. Devtools
-            protocol allows you to manipulate the entire control beyond the UI
-            layer to enhance the way a it would normally load a web app by doing
-            things like intercepting network request, manipulating elements, and
-            more. A11yWatch goes to the next level with optimisations for speed
-            by leveraging multiple technologies like Rust, protocols like gRPC
-            and efficient algorithms. We also use a custom runner that is over
-            10,000 times faster than any open source headless runner.
-          </p>
-        </div>
       </div>
 
-      <div className='py-6'>
-        <h3 className='py-2 border-t border-b font-bold text-lg'>
-          Accessibility Coverage
-        </h3>
+      <div className='py-8'>
+        <h4 className='text-lg font-bold'>Reasons why A11yWatch is faster</h4>
+        <p>
+          Some of the reasons A11yWatch is faster and more efficient than the
+          rest is due to the way we gather our resources with our Rust crawler
+          and protocol of choice to control the browser. Devtools protocol
+          allows you to manipulate the entire control beyond the UI layer to
+          enhance the way a it would normally load a web app by doing things
+          like intercepting network request, manipulating elements, and more.
+          A11yWatch goes to the next level with optimisations for speed by
+          leveraging multiple technologies like Rust, gRPC streams and extremely
+          efficient algorithms. We also use a custom runner that is over 10,000
+          - 100,000+ times faster than any open source runner that can be used
+          outside our system.
+        </p>
       </div>
+
+      <h3 className='py-8 border-t border-b font-bold text-lg'>
+        Accessibility Coverage
+      </h3>
 
       <div className='overflow-auto border rounded'>
         <table className='min-w-full table-auto'>
+          <caption style={{ captionSide: 'bottom' }} className={'p-2'}>
+            A11yWatch web accessibility coverage comparison
+          </caption>
           <TableHeading title={'Coverage'} />
           <tbody>
             <TableRow

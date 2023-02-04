@@ -13,6 +13,7 @@ import { MarketingBottomTemporaryDrawer } from '@app/components/modal'
 import { companyName } from '@app/configs'
 import { MarketingBenefits } from '@app/components/stateless/marketing/benefits'
 import { MarketingCli } from '@app/components/stateless/marketing/cli-usage'
+import { MarketingIntroCoverage } from '@app/components/stateless/marketing/intro-coverage'
 
 function Index() {
   return (
@@ -23,9 +24,10 @@ function Index() {
         </MarketingIntro>
         <FeaturesList />
         <MarketingDashboard />
-        <MarketingBenefits />
         <MarketingCli />
         <MarketingTrustBy />
+        <MarketingIntroCoverage />
+        <MarketingBenefits />
       </MarketingDrawer>
       <MarketingBottomTemporaryDrawer />
     </Fragment>

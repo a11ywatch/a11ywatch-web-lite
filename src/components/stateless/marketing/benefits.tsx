@@ -5,7 +5,7 @@ import { SectionContainer } from '../containers/section-container'
 const sections: { id: string; text: string }[] = [
   {
     id: 'intro',
-    text: `We created ${companyName} from beginning to be fast, flexible, and simple. Our business model is transparent and different compared to normal services. Pricing is fair across the board since we only charge for the time it takes your page to load.`,
+    text: `We created ${companyName} from beginning to be fast, flexible, and simple. Our business model is transparent and different compared to normal services. Pricing is fair across the board since we only charge for the time it takes to perform audits on the page.`,
   },
   {
     id: 'clause',
