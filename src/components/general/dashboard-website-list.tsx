@@ -13,6 +13,20 @@ type DashboardWebsiteListProps = {
   queryModalVisible?: boolean
 }
 
+// display type
+const webPageStyle = ({
+  sortModalVisible,
+  queryModalVisible,
+}: {
+  sortModalVisible?: boolean
+  queryModalVisible?: boolean
+}) => {
+  if (sortModalVisible || queryModalVisible) {
+    return 'hidden'
+  }
+  return 'visible py-2'
+}
+
 export const DashboardWebsiteList: FC<DashboardWebsiteListProps> = ({
   sortModalVisible,
   queryModalVisible,
@@ -36,17 +50,6 @@ export const DashboardWebsiteList: FC<DashboardWebsiteListProps> = ({
     [data]
   )
 
-  // conditional display
-  let webpageStyle = 'visible py-2'
-
-  if (sortModalVisible) {
-    webpageStyle = 'hidden'
-  }
-
-  if (queryModalVisible) {
-    webpageStyle = 'hidden'
-  }
-
   return (
     <>
       {lhEnabled ? (
@@ -56,7 +59,7 @@ export const DashboardWebsiteList: FC<DashboardWebsiteListProps> = ({
           </style>
         </Head>
       ) : null}
-      <div className={webpageStyle}>
+      <div className={webPageStyle({ sortModalVisible, queryModalVisible })}>
         <WebsiteList
           data={data}
           error={error}

@@ -41,18 +41,20 @@ const AnalyticsWrapper = ({
         domain={domain as string}
         totalErrors={totalErrors}
       />
-      <div
-        aria-hidden={!visible}
-        className={`${visible ? 'visible' : 'hidden'} rounded-b ${
-          visible ? visibleList : hiddenList
-        }`}
-      >
-        {loaded ? (
-          <FetchIssue url={pageUrl} />
-        ) : (
-          <Skeleton className='w-full h-30' />
-        )}
-      </div>
+      {errorCount || warningCount ? (
+        <div
+          aria-hidden={!visible}
+          className={`${visible ? 'visible' : 'hidden'} rounded-b ${
+            visible ? visibleList : hiddenList
+          }`}
+        >
+          {loaded ? (
+            <FetchIssue url={pageUrl} />
+          ) : (
+            <Skeleton className='w-full h-30' />
+          )}
+        </div>
+      ) : null}
     </li>
   )
 }

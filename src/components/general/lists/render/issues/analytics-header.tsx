@@ -28,6 +28,7 @@ const ListCellAnalyticsHeaderW = ({
   ).toFixed(0)
 
   const dynamicErrorClassName = `w-${errorPercentage}-after`
+  const disabled = !warningCount && !errorCount
 
   // return a small single row of the page and issues with a dropdown
   return (
@@ -48,9 +49,12 @@ const ListCellAnalyticsHeaderW = ({
         )}
       >
         <button
-          className={`px-4 py-2 text-left place-items-center hover:opacity-80 flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate`}
+          className={`px-4 py-2 text-left place-items-center${
+            !disabled ? ' hover:opacity-80' : ''
+          } flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate`}
           onClick={onTogglelist}
           aria-expanded={visible}
+          disabled={disabled}
           aria-label={`Toggle section visible for ${url}`}
         >
           {url.startsWith('https://')

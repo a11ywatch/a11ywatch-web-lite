@@ -75,19 +75,21 @@ export const FeedHeadingComponent = ({
             <GrSync className={'text-base grIcon'} />
           </button>
         ) : null}
-        {totalIssues ? <button
-          onClick={onToggle}
-          className='px-5 py-1 hover:opacity-70'
-          title={`Toggle issues ${
-            sectionHidden ? 'visible' : 'hidden'
-          } for ${pageUrl}`}
-        >
-          {sectionHidden ? (
-            <GrDown className={'text-base grIcon'} />
-          ) : (
-            <GrUp className={'text-base grIcon'} />
-          )}
-        </button> : null}
+        {totalIssues ? (
+          <button
+            onClick={onToggle}
+            className='px-5 py-1 hover:opacity-70'
+            title={`Toggle issues ${
+              sectionHidden ? 'visible' : 'hidden'
+            } for ${pageUrl}`}
+          >
+            {sectionHidden ? (
+              <GrDown className={'text-base grIcon'} />
+            ) : (
+              <GrUp className={'text-base grIcon'} />
+            )}
+          </button>
+        ) : null}
       </div>
     </div>
   )

@@ -16,6 +16,20 @@ type DashboardWebsiteListProps = {
   refetchWebsites(_?: any): Promise<any>
 }
 
+// display type
+const webPageStyle = ({
+  sortModalVisible,
+  queryModalVisible,
+}: {
+  sortModalVisible?: boolean
+  queryModalVisible?: boolean
+}) => {
+  if (sortModalVisible || queryModalVisible) {
+    return 'hidden'
+  }
+  return 'visible py-2'
+}
+
 export const DashboardWebsiteSingle: FC<DashboardWebsiteListProps> = ({
   sortModalVisible,
   queryModalVisible,
@@ -65,17 +79,6 @@ export const DashboardWebsiteSingle: FC<DashboardWebsiteListProps> = ({
     }
   }
 
-  // conditional display
-  let webpageStyle = 'visible py-2'
-
-  if (sortModalVisible) {
-    webpageStyle = 'hidden'
-  }
-
-  if (queryModalVisible) {
-    webpageStyle = 'hidden'
-  }
-
   return (
     <>
       {data?.pageInsights ? (
@@ -85,7 +88,7 @@ export const DashboardWebsiteSingle: FC<DashboardWebsiteListProps> = ({
           </style>
         </Head>
       ) : null}
-      <div className={webpageStyle}>
+      <div className={webPageStyle({ sortModalVisible, queryModalVisible })}>
         <WebsiteList
           data={websites}
           error={error}

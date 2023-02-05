@@ -30,7 +30,7 @@ function MarketingIntro({
         ) : (
           <div>
             <p className='text-base '>
-              A11ywatch provides powerful tools for testing web inclusivity
+              A11yWatch provides powerful tools for testing web inclusivity
               correctly so you can build better software. Our system is
               constantly improving web accessibility test coverage, efficiency &
               speed, and other integrations that help productivity.

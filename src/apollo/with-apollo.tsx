@@ -66,7 +66,7 @@ const createLink = (): ApolloLink => {
         ) {
           return
         }
-        AppManager.toggleSnack(true, errors, 'error',  upgradeRequired(errors))
+        AppManager.toggleSnack(true, errors, 'error', upgradeRequired(errors))
       }
 
       if (networkError) {

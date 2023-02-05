@@ -3,8 +3,8 @@ export type Analytic = {
   _id?: string
   id?: string
   pageUrl?: string
-  errorCount?: number
-  warningCount?: number
+  errorCount: number
+  warningCount: number
   noticeCount?: number
   errorOccurances?: string
   userId?: number

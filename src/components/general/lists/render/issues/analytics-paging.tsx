@@ -20,31 +20,47 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
 }) => {
   const [issueIndex, setIndex] = useState<number>(0)
   const { data, loading, onLoadMore } = useAnalyticsData(pageUrl, false) // todo: use onComplete callback for next page
-  const issueSource = useMemo(
-    () => (liveData?.length ? liveData : data) || [],
-    [liveData, data]
-  )
+
+  const { issueSource, liveDataExist } = useMemo(() => {
+    const liveDataExist = liveData?.length
+    return {
+      issueSource: (liveDataExist ? liveData : (data as Analytic[])) || [],
+      liveDataExist,
+    }
+  }, [liveData, data])
+
   const [issueList, stats] = useMemo(() => {
-    const items: Analytic[] = []
+    const base = (issueIndex + 1) * 10
+    const sourceSet = liveDataExist
+      ? issueSource.filter((item) => item.warningCount || item.errorCount)
+      : issueSource
+    const items: Analytic[] = new Array(Math.max(sourceSet.length, 10))
+
     let errorCount = 0
+    let warningCount = 0
+    // iterator
+    let j = 0
 
-    if (issueSource) {
-      const base = (issueIndex + 1) * 10
+    // loop until ten items filled
+    for (let i = base - 10; i < base; i++) {
+      const item = sourceSet[i]
 
-      for (let i = base - 10; i < base; i++) {
-        const item = issueSource[i]
-        if (!item) {
-          break
-        }
-        if (typeof item.errorCount === 'number') {
-          errorCount += item.errorCount
-        }
-        items.push(item)
+      if (!item) {
+        break
+      }
+
+      if (item.errorCount || item.warningCount) {
+        errorCount += item.errorCount
+        warningCount += item.warningCount
+        items[j] = item
+        j++
       }
     }
 
-    return [items, { errorCount: errorCount }]
-  }, [issueIndex, issueSource])
+    items.length = j
+
+    return [items, { errorCount, warningCount }]
+  }, [issueIndex, issueSource, liveDataExist])
 
   const onPrevSelect = () => {
     if (issueIndex) {
@@ -53,7 +69,6 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
   }
 
   const idx = (issueIndex + 1) * 10
-  const blocked = issueSource.length < idx
 
   const onLoadEvent = async () => {
     // get the next set of data
@@ -88,7 +103,7 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
           <Button
             iconButton
             onClick={onPrevSelect}
-            className={` ${issueIndex ? 'visible' : 'hidden'}`}
+            className={issueIndex ? 'visible' : 'hidden'}
           >
             <GrFormPreviousLink className='grIcon' />
           </Button>
@@ -96,7 +111,11 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
             iconButton
             disabled={loading}
             onClick={onLoadEvent}
-            className={` ${!blocked ? 'visible' : 'hidden'}`}
+            className={
+              issueSource.length < idx || issueList.length < 10
+                ? 'hidden'
+                : 'visible'
+            }
           >
             <GrFormNextLink className='grIcon' />
           </Button>
