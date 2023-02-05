@@ -102,17 +102,23 @@ const RenderInnerPagesWrapper: FC<PagesPagingProps> = ({
           <Button
             iconButton
             onClick={onPrevSelect}
-            className={`${issueIndex ? 'visible' : 'hidden'}`}
+            className={issueIndex ? 'visible' : 'hidden'}
           >
-            <GrFormPreviousLink className='grIcon' />
+            <>
+              <span className='sr-only'>Previous Page</span>
+              <GrFormPreviousLink className='grIcon' />
+            </>
           </Button>
           <Button
             iconButton
             disabled={loading}
             onClick={onLoadEvent}
-            className={` ${!blocked ? 'visible' : 'hidden'}`}
+            className={!blocked ? 'visible' : 'hidden'}
           >
-            <GrFormNextLink className='grIcon' />
+            <>
+              <span className='sr-only'>Next Page</span>
+              <GrFormNextLink className='grIcon' />
+            </>
           </Button>
         </div>
       </div>

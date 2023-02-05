@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useState } from 'react'
+import { FC, memo, useMemo, useRef, useState } from 'react'
 import { useAnalyticsData } from '@app/data/external/analytics/analytics'
 import { InnerWrapper } from '../../list-wrapper'
 import { Button } from '../../../buttons'
@@ -20,6 +20,10 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
 }) => {
   const [issueIndex, setIndex] = useState<number>(0)
   const { data, loading, onLoadMore } = useAnalyticsData(pageUrl, false) // todo: use onComplete callback for next page
+  const offsetTracking = useRef<{ last: number; next: number }>({
+    last: 0,
+    next: 0,
+  })
 
   const { issueSource, liveDataExist } = useMemo(() => {
     const liveDataExist = liveData?.length
@@ -30,40 +34,53 @@ const RenderInnerAnalyticsWrapper: FC<AnalyticsPagingProps> = ({
   }, [liveData, data])
 
   const [issueList, stats] = useMemo(() => {
-    const base = (issueIndex + 1) * 10
-    const sourceSet = liveDataExist
-      ? issueSource.filter((item) => item.warningCount || item.errorCount)
-      : issueSource
-    const items: Analytic[] = new Array(Math.max(sourceSet.length, 10))
+    let base = (issueIndex + 1) * 10
+
+    if (liveDataExist && issueIndex) {
+      // set the last offset value
+      offsetTracking.current.last = offsetTracking.current.next
+      base += offsetTracking.current.next
+    }
+
+    const items: Analytic[] = new Array(Math.max(issueSource.length, 10))
 
     let errorCount = 0
     let warningCount = 0
     // iterator
     let j = 0
+    let i = base - 10
+    // offset position
+    let offsetTracker = 0
 
     // loop until ten items filled
-    for (let i = base - 10; i < base; i++) {
-      const item = sourceSet[i]
+    for (; j < 10; i++) {
+      const item = issueSource[i]
 
-      if (!item) {
+      if (!item || j === 10) {
         break
       }
 
       if (item.errorCount || item.warningCount) {
+        items[j] = item
         errorCount += item.errorCount
         warningCount += item.warningCount
-        items[j] = item
         j++
+      } else {
+        offsetTracker += 1
       }
     }
 
+    offsetTracking.current.next = offsetTracker
     items.length = j
 
     return [items, { errorCount, warningCount }]
-  }, [issueIndex, issueSource, liveDataExist])
+  }, [issueIndex, issueSource, liveDataExist, offsetTracking])
 
   const onPrevSelect = () => {
     if (issueIndex) {
+      if (liveDataExist) {
+        offsetTracking.current.next = offsetTracking.current.last
+      }
       setIndex((x: number) => x - 1)
     }
   }

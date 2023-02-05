@@ -34,13 +34,15 @@ const ListCellPagesHeaderW = ({
     }
   })
 
-  const [pathName, link] = useMemo(() => {
+  const [u, link] = useMemo(() => {
     if (typeof window !== 'undefined' && url) {
       try {
-        const u = new URL(url)
-        const p = `${u.pathname}${u.search}`
-
-        return [p, `/website-details?url=${encodeURI(url)}`]
+        return [
+          url.startsWith('https://')
+            ? url.replace('https://', '')
+            : url.replace('http://', ''),
+          `/website-details?url=${encodeURI(url)}`,
+        ]
       } catch (e) {
         console.error(e)
       }
@@ -74,13 +76,16 @@ const ListCellPagesHeaderW = ({
           className={`px-4 py-2 text-left place-items-center flex-1 max-w-2/3 md:w-auto line-clamp-1 truncate text-xs md:text-sm hover:text-blue-800`}
           href={link}
         >
-          {pathName}
+          {u}
         </Link>
-        <div className='grid grid grid-cols-3 auto-cols-max text-center place-items-center text-right'>
+        <div className='grid grid-cols-3 auto-cols-max text-center place-items-center text-right'>
           <div className='w-[2.4rem] md:w-[3rem]'>
             {pageInsights ? (
               <Button iconButton onClick={getPageSpeed}>
-                <GrView className='grIcon' />
+                <>
+                  <span className='sr-only'>View Lighthouse</span>
+                  <GrView className='grIcon text-xs' />
+                </>
               </Button>
             ) : (
               'false'
