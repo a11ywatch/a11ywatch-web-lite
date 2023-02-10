@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import dynamic from 'next/dynamic'
 import { LinearBottom } from '@app/components/general'
 import { metaSetter } from '@app/utils'
 import { _ONBOARDED } from '@app/lib/cookies/names'
@@ -19,14 +18,7 @@ import { DashboardWebsiteList } from '@app/components/general/dashboard-website-
 import { useAuthContext } from '@app/components/providers/auth'
 import { DashboardWebsiteSingle } from '@app/components/general/dashboard-website-single'
 import { StateLessViewConfigTitle } from '@app/components/stateless/titles/view-config-title'
-
-const CtaHtmlInputRest = dynamic(
-  () =>
-    import('../../components/cta/searchbar/cta-html-input-rest').then(
-      (mod) => mod.CtaHtmlInputRest
-    ),
-  { ssr: false }
-)
+import { CtaHtmlInputRest } from '../../components/cta/searchbar/cta-html-input-rest'
 
 function Dashboard() {
   const [sortModalVisible, setSortModalVisible] = useState<boolean>(false)
