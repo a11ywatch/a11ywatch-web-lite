@@ -1,10 +1,10 @@
-FROM node:alpine AS deps
+FROM node:20.2-alpine3.17 AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn config set network-timeout 300000 && yarn install --frozen-lockfile
 
-FROM node:alpine AS builder
+FROM node:20.2-alpine3.17 AS builder
 WORKDIR /app
 
 ARG WEB_SOCKET_URL
@@ -21,7 +21,7 @@ COPY --from=deps /app/node_modules ./node_modules
 # remove all dev modules
 RUN yarn build && rm -R ./node_modules && yarn install --production
 
-FROM node:alpine AS runner
+FROM node:20.2-alpine3.17 AS runner
 WORKDIR /app
 
 RUN addgroup -g 1001 -S nodejs

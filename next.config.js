@@ -100,9 +100,7 @@ let nextJSConfigs = {
 }
 
 if (process.env.PWA_ENABLED !== "0") {
-  const runtimeCaching = require('next-pwa/cache')
   const withPWA = require('next-pwa')({
-    runtimeCaching,
     dest: 'public',
     mode: process.env.WORKBOX_MODE || 'production',
     disable: dev,

@@ -1,10 +1,10 @@
-FROM node:alpine AS deps
+FROM node:20.2-alpine3.17 AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:alpine AS runner
+FROM node:20.2-alpine3.17 AS runner
 WORKDIR /app
 COPY . .
 COPY wasm wasm
